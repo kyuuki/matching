@@ -22,13 +22,17 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="#">ユーザー登録</a>
+            <%= link_to "ユーザー登録", new_user_registration_path %>
           </li>
           <li>
-            <a href="#">スタイリストの方はこちら</a>
+            <%= link_to "スタイリストの方はこちら", new_user_registration_path %>
           </li>
           <li>
-            <a href="#">ログイン</a>
+            <% if current_user.nil? %>
+            <%= link_to "ログイン", new_user_session_path %>
+            <% else %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <% end %>
           </li>
         </ul>
       </div>
