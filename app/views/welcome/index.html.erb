@@ -48,6 +48,12 @@
 
 <div class="container">
   <h3 class="page-header text-center">販売中のチケット</h3>
+
+  <% @items.each_slice(3) do |items| %>
+    <div class="row">
+      <%= render items %>
+    </div>
+  <% end %>
 </div>
 
 <div class="container">
@@ -76,15 +82,14 @@
   </div>
 </div>
 
+<% if current_user.nil? %>
 <div class="container">
   <p class="text-center">まずは無料でお試し</p>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-sm-offset-3">
       <%= link_to "無料ユーザー登録はこちら", new_user_registration_path, { class: "btn btn-danger btn-lg btn-block" } %>
-    </div>
-    <div class="col-sm-6">
-      <%= link_to "スタイリスト登録はこちら", new_user_registration_path, { class: "btn btn-info btn-lg btn-block" } %>
     </div>
   </div>
 </div>
+<% end %>
 

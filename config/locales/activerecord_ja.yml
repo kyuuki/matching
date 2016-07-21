@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+    attributes:
+      item:
+        execution_time: サービス施行時間
+        place: サービス提供可能場所
+        service: サービス内容
+        detail: サービス内容詳細
+        price: 値段

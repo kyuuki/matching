@@ -14,26 +14,28 @@
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav">
           <li>
-            <a href="#">販売中のチケット</a>
+            <%= link_to "販売中のチケット", items_path %>
           </li>
           <li>
             <a href="#">○○とは？</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <% if current_user.nil? %>
           <li>
             <%= link_to "ユーザー登録", new_user_registration_path %>
           </li>
           <li>
-            <%= link_to "スタイリストの方はこちら", new_user_registration_path %>
+            <%= link_to "ログイン", new_user_session_path %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to "チケット登録", new_item_path %>
           </li>
           <li>
-            <% if current_user.nil? %>
-            <%= link_to "ログイン", new_user_session_path %>
-            <% else %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            <% end %>
           </li>
+          <% end %>
         </ul>
       </div>
     </div>

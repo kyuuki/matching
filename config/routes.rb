@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  resources :items, only: [ :index, :show, :new, :create ]
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   devise_for :admin_users
