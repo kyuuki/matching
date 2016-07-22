@@ -17,7 +17,37 @@
 
 <%= render "shared/header" %>
 
+<div class="content">
+
+<% if not notice.nil? or not alert.nil? %>
+<div class="modal fade" id="static-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <% if not notice.nil? %>
+          <p class="alert alert-info"><%= notice %></p>
+        <% end %>
+        <% if not alert.nil? %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $("#static-modal").modal();
+  });
+</script>
+<% end %>
+
 <%= yield %>
+
+</div>
 
 <%= render "shared/footer" %>
 

@@ -1,7 +1,13 @@
 ja:
   activerecord:
     models:
+      user: ユーザー
+      item: チケット
     attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
       item:
         execution_time: サービス施行時間
         place: サービス提供可能場所
