@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
+  namespace :mypage do
+  get 'messages/index'
+  end
+
   root 'welcome#index'
   resources :items, only: [ :index, :show, :new, :create ]
+  namespace :mypage do
+    resources :users, only: [ :index ] do
+      resources :messages, only: [ :index, :create ]
+    end
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   devise_for :admin_users
