@@ -13,10 +13,6 @@
  *= require_tree .
  *= require_self
  */
-.content {
-  margin-top: 40px;
-}
-
 .field_with_errors .control-label {
   color: #d9230f;
 }

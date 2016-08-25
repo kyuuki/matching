@@ -1,0 +1,40 @@
+<section class="section p-customer-voice c-border-r c-border-l">
+    <div class="container">
+      <h3 class="text-center section__title">購入された方の声</h3>
+      <div class="row">
+        <div class="col-sm-6">
+            <div class="col-sm-2 text-center">
+               <img class="section__roundimg" src="/images/prof_img2.jpg" width="80px" height="80px" alt="プロフィール写真">
+            </div>
+            <div class="col-sm-9 col-sm-offset-1">
+                <h4 class="section__subhead">キャッチコピーキャッチコピーキャッチコピー</h4>
+                <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="col-sm-2 text-center">
+               <img class="section__roundimg" src="/images/prof_img.jpg" width="80px" height="80px" alt="プロフィール写真">
+            </div>
+            <div class="col-sm-9 col-sm-offset-1">
+                <h4 class="section__subhead">キャッチコピーキャッチコピーキャッチコピー</h4>
+                <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            </div>
+        </div>
+        </div>
+      </div>
+</section>
+
+<% if current_user.nil? %>
+<section class="section p-trial-recommend c-border-r c-border-l">      
+    <div class="container">
+        <h3 class="text-center p-trial-recommend__title">まずは<b>無料</b>で<b>お試し</b>♪</h3>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <!-- <a data-target="sign_up" class="btn btn-warning btn-lg btn-block modal-open">無料ユーザー登録はこちら</a> -->
+          <%= link_to "無料ユーザー登録はこちら", new_user_registration_path, { class: "btn btn-warning btn-lg btn-block" } %>
+        </div>
+      </div>
+    </div>
+</section>
+<% end %>
+

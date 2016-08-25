@@ -1,95 +1,68 @@
-<div class="jumbotron">
-  <div class="container">
-    <h2>
-      キャッチコピーキャッチコピー<br>
-      キャッチコピーキャッチコピー
-    </h2>
-  </div>
+<div class="jumbotron-top">
+    <div class="jumbotron">
+      <div class="container">
+        <h2 class="jumbotron-top__title">
+          キャッチコピーキャッチコピー<br>
+          キャッチコピーキャッチコピー
+        </h2>
+      </div>
+    </div>
 </div>
 
-<div class="container">
-  <h3 class="page-header text-center">サービス内容</h3>
-  <div class="row">
-    <div class="col-sm-4">
-      <p>
-        誰でもかんたんに使える
+<section class="section c-border-t c-border-r c-border-l">
+    <div class="container">
+      <h3 class="text-center section__title">サービス内容</h3>
+      <div class="row">
+        <div class="col-sm-4">
+             <div class="section__img-box">
+                 <p class="text-center"><i class="fa fa-heart fa-3x" aria-hidden="true"></i></p>
+                 <h4 class="text-center">誰でもかんたんに使える</h4>   
+             </div>                
+          <p>
+            テキストテキストテキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキストテキストテキスト
+          </p>
+        </div>
+        <div class="col-sm-4">
+             <div class="section__img-box">
+                 <p class="text-center"><i class="fa fa-heart fa-3x" aria-hidden="true"></i></p>
+                 <h4 class="text-center">誰でもかんたんに使える</h4>   
+             </div>                
+          <p>
+            テキストテキストテキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキストテキストテキスト
+          </p>
+        </div>
+        <div class="col-sm-4">
+             <div class="section__img-box">
+                 <p class="text-center"><i class="fa fa-heart fa-3x" aria-hidden="true"></i></p>
+                 <h4 class="text-center">誰でもかんたんに使える</h4>   
+             </div>                
+          <p>
+            テキストテキストテキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキストテキストテキスト
+          </p>
+        </div>
+      </div>
+      <p class="text-center">
+          <a href="/about.html"><button type="button" class="btn btn-outline-danger btn-lg">Matchingとは？</button></a>
       </p>
-      <p>
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-      </p>
-    </div>
-    <div class="col-sm-4">
-      <p>
-        誰でもかんたんに使える
-      </p>
-      <p>
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-      </p>
-    </div>
-    <div class="col-sm-4">
-      <p>
-        誰でもかんたんに使える
-      </p>
-      <p>
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-      </p>
-    </div>
-  </div>
-  <p class="text-center">
-    <a href="#" class="btn btn-primary btn-lg">○○とは？</a>
-  </p>
-</div>
+    </div><!-- .container -->
+</section>
 
-<div class="container">
-  <h3 class="page-header text-center">販売中のチケット</h3>
+<section class="section c-bg-dark c-border-r c-border-l">
+    <div class="container">
+      <h3 class="text-center section__title">販売中のチケット</h3>
 
   <% @items.each_slice(3) do |items| %>
     <div class="row">
       <%= render items %>
     </div>
   <% end %>
+ </div>    
 </div>
 
-<div class="container">
-  <h3 class="page-header text-center">購入された方の声</h3>
-  <div class="row">
-    <div class="col-sm-6">
-      <p>
-        キャッチコピーキャッチコピーキャッチコピー
-      </p>
-      <p>
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-      </p>
-    </div>
-    <div class="col-sm-6">
-      <p>
-        キャッチコピーキャッチコピーキャッチコピー
-      </p>
-      <p>
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-        テキストテキストテキストテキストテキストテキストテキストテキスト
-      </p>
-    </div>
-  </div>
-</div>
-
-<% if current_user.nil? %>
-<div class="container">
-  <p class="text-center">まずは無料でお試し</p>
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <%= link_to "無料ユーザー登録はこちら", new_user_registration_path, { class: "btn btn-danger btn-lg btn-block" } %>
-    </div>
-  </div>
-</div>
-<% end %>
-
+<%= render "shared/voice" %>

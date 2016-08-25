@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-default navbar-fixed-top">
+   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <button class="navbar-toggle collapsed" data-target="#navbar-menu" data-toggle="collapse">
@@ -8,24 +8,26 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">ロゴ</a>
-        <p class="navbar-text"></p>
+        <a class="navbar-brand" href="/"><img src="/images/logo.jpg" alt="ロゴ"></a>
       </div>
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav">
-          <li>
-            <%= link_to "販売中のチケット", items_path %>
+          <li class="navbar-nav--emphasis">
+            <%= link_to items_path do %>
+              <b>販売中の</b><br>チケット
+            <% end %>
           </li>
           <li>
-            <a href="#">○○とは？</a>
+            <a href="/about.html">○○とは？</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if current_user.nil? %>
-          <li>
+          <li class="navbar-nav--register">
+            <!-- <a data-target="sign_up" class="modal-open">ユーザー登録</a> -->
             <%= link_to "ユーザー登録", new_user_registration_path %>
           </li>
-          <li>
+          <li class="navbar-nav--login">
             <%= link_to "ログイン", new_user_session_path %>
           </li>
           <% else %>
@@ -40,4 +42,8 @@
       </div>
     </div>
   </nav>
+
+<!--Modal contents-->
+
 </header>
+
