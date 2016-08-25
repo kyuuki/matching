@@ -48,7 +48,9 @@
         </div>
       </div>
       <p class="text-center">
-          <a href="/about.html"><button type="button" class="btn btn-outline-danger btn-lg">Matchingとは？</button></a>
+          <%= link_to about_path do %>
+            <button type="button" class="btn btn-outline-danger btn-lg">Matchingとは？</button>
+          <% end %>
       </p>
     </div><!-- .container -->
 </section>

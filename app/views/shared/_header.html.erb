@@ -8,7 +8,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/"><img src="/images/logo.jpg" alt="ロゴ"></a>
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <img src="/images/logo.jpg" alt="ロゴ">
+        <% end %>
       </div>
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav">
@@ -18,7 +20,9 @@
             <% end %>
           </li>
           <li>
-            <a href="/about.html">○○とは？</a>
+            <%= link_to about_path do %>
+              ○○とは？
+            <% end %>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -31,10 +35,10 @@
             <%= link_to "ログイン", new_user_session_path %>
           </li>
           <% else %>
-          <li>
+          <li class="navbar-nav--register">
             <%= link_to "チケット登録", new_item_path %>
           </li>
-          <li>
+          <li class="navbar-nav--login">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </li>
           <% end %>
@@ -44,6 +48,7 @@
   </nav>
 
 <!--Modal contents-->
+<!-- TODO -->
 
 </header>
 

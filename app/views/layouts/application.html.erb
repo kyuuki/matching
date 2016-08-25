@@ -5,7 +5,7 @@
     <meta charset='utf-8'>
     <meta content="" name="description">
     <meta content="" name="keywords">
-    <title>がんばる女性に安らぎを　マッチングサービス「○○」</title>
+    <title><%= content_for(:title) ? yield(:title) + " | " : "" %>がんばる女性に安らぎを　マッチングサービス「○○」</title>
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
@@ -30,8 +30,6 @@
 <body>
 
 <%= render "shared/header" %>
-
-<div class="content">
 
 <% if not notice.nil? or not alert.nil? %>
 <div class="modal fade" id="static-modal">
@@ -58,6 +56,8 @@
   });
 </script>
 <% end %>
+
+<div class="content">
 
 <%= yield %>
 

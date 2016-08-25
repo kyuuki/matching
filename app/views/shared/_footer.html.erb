@@ -1,22 +1,24 @@
 <footer class="footer">
     <div class="container">
             <div class="footer__logo col-md-6 col-md-offset-3 text-center">
-             <a href="/"><img src="/images/logo.jpg" alt="ロゴ"></a>
+            <%= link_to root_path do %>
+              <img src="/images/logo.jpg" alt="ロゴ">
+            <% end %>
             </div>
                 <div class="row">
                     <div class="col-md-4">
                         <ul class="list-group">
                             <li class="c-only-bold first">
-                                <a href="/">トップ</a>
+                                <%= link_to "トップ", root_path %>
                             </li>
                             <li>
-                                <a href="/about.html">Matchingとは？</a>
+                                <%= link_to "Matchingとは？", about_path %>
                             </li>
                             <li>
-                                <a href="/items.html">チケット一覧</a>
+                                <%= link_to "チケット一覧", items_path %>
                             </li>
                             <li>
-                                <a href="/terms.html">利用規約</a>
+                                <%= link_to "利用規約", terms_path %>
                             </li>
                         </ul>
                         <!-- /nav -->

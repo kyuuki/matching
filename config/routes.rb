@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   end
 
   root 'welcome#index'
+  get 'about' => 'welcome#about'
+  get 'terms' => 'welcome#terms'
+
   resources :items, only: [ :index, :show, :new, :create ]
   namespace :mypage do
     resources :users, only: [ :index ] do
