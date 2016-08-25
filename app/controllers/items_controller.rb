@@ -1,11 +1,16 @@
 class ItemsController < ApplicationController
-  before_action :set_campaign, only: [:show]
+  before_action :set_item, only: [:show]
 
   def index
     @items = Item.order(id: :desc).all
   end
 
   def show
+    # 人気のチケット
+    @items = Item.order(id: :desc).first(3)
+
+    # メッセージ送信
+    @message = Message.new
   end
 
   def new
