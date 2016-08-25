@@ -10,6 +10,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.item_available_japan_places.build
+    @item.item_available_datetimes.build(from: Time.zone.now, to: Time.zone.now)
+    #@item.item_available_datetime_forms.build
   end
 
   def create
@@ -29,6 +32,6 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:execution_time, :place, :service_id, :detail, :price)
+      params.require(:item).permit({service_ids: []}, :execution_time, :detail, :price)
     end
 end

@@ -4,27 +4,66 @@
   <div class="alert alert-dismissible alert-warning">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <p>TODO: チケット登録に必要な項目が登録されていない場合はユーザー登録追加画面を表示する。</p>
+    <p>TODO: 「サービス提供可能場所」「サービス提供可能日時」がまだ仮。</p>
   </div>
 
+  <% if @item.errors.any? %>
+  <div class="alert alert-error alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
   <%= form_for(@item, html: { class: "form-horizontal" }) do |f| %>
+    <div class="form-group">
+      <%= f.label :services, class: "col-md-2 control-label" %>
+      <div class="col-md-6">
+        <div class="form-inline">
+        <%= f.collection_check_boxes(:service_ids, Service.all, :id, :name) do |b| %>
+           <div class="checkbox">
+             <%= b.label { b.check_box + " " + b.text } %>
+           </div>
+        <% end %>
+         </div>
+      </div>
+    </div>
+
+    <div class="form-group item_available_japan_places">
+      <%= f.label :item_available_japan_places, class: "col-md-2 control-label" %>
+      <div class="col-md-8">
+        <div class="item_available_japan_places">
+          <%= f.fields_for :item_available_japan_places do |form| %>
+            <%= render "item_available_japan_place_fields", f: form %>
+          <% end %>
+        </div>
+        <div class="links">
+          <%= link_to_add_association "追加", f, :item_available_japan_places %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :item_available_datetimes, class: "col-md-2 control-label" %>
+      <div class="col-md-8">
+        <div class="item_available_datetimes">
+          <%= f.fields_for :item_available_datetimes do |form| %>
+            <%= render "item_available_datetime_fields", f: form %>
+          <% end %>
+        </div>
+        <div class="links">
+          <%= link_to_add_association "追加", f, :item_available_datetimes %>
+        </div>
+      </div>
+    </div>
+
     <div class="form-group">
       <%= f.label :execution_time, class: "col-md-2 control-label" %>
       <div class="col-md-2">
         <%= f.number_field :execution_time, class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :place, class: "col-md-2 control-label" %>
-      <div class="col-md-6">
-        <%= f.text_field :place, class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :service, class: "col-md-2 control-label" %>
-      <div class="col-md-4">
-        <%= f.collection_select(:service_id, Service.all, :id, :name, {}, { class: "form-control" }) %>
       </div>
     </div>
 

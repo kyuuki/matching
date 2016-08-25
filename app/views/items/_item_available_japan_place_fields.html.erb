@@ -1,0 +1,5 @@
+<div class="nested-fields form-inline">
+  <%= collection_select :nil, :japan_prefecture_id, JapanPrefecture.all, :id, :name, {}, { class: "form-control" } %>
+  <%= f.collection_select :japan_city_id, JapanCity.all, :id, :name, {}, { class: "form-control" } %>
+  <%= link_to_remove_association "remove", f %>
+</div>

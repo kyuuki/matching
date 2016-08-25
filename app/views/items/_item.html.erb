@@ -2,8 +2,12 @@
   <div class="panel panel-default">
     <div class="panel-body">
       ユーザー: <%= item.user.try!(:email) %><br>
+      サービス:
+      <% item.services.each_with_index do |service, i| %>
+        <% if i != 0 %>, <% end %><%= service.name %>
+      <% end %>
+      <br>
       時間: <%= item.execution_time %> 分<br>
-      サービスの内容: <%= item.service.try!(:name) %><br>
       詳細: <%= item.detail %><br>
       値段: <%= item.price %><br>
     </div>

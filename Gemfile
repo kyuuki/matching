@@ -56,6 +56,7 @@ gem 'omniauth-twitter'
 
 gem 'kaminari'
 gem 'ransack'
+gem 'cocoon'
 
 group :test do
   gem 'rspec-rails'
