@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
-  namespace :mypage do
-  get 'messages/index'
-  end
-
   root 'welcome#index'
   get 'about' => 'welcome#about'
   get 'terms' => 'welcome#terms'
 
   resources :items, only: [ :index, :show, :new, :create ]
-  namespace :mypage do
-    resources :users, only: [ :index ] do
+  resource :mypage, only: [ :show ] do
+    resources :users, only: [] do
       resources :messages, only: [ :index, :create ]
     end
   end

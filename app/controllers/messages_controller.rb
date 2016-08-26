@@ -1,4 +1,4 @@
-class Mypage::MessagesController < ApplicationController
+class MessagesController < ApplicationController
   before_action :authenticate_user!, :check_self_message!
   def index
     # TODO: 存在しない

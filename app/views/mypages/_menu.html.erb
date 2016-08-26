@@ -1,0 +1,30 @@
+<div class="panel list-group">
+  <%= link_to mypage_path, class: "list-group-item" do %>
+    <span class="glyphicon glyphicon-home"></span> マイページTOP
+    <span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span>
+  <% end %>
+
+  <!-- #menuOne -->
+  <a href="#menuOne" class="list-group-item" data-toggle="collapse" data-target="#menuOne" data-parent="#menu">
+    <span class="glyphicon glyphicon-envelope"></span> メッセージ <span class="label label-warning">3</span>
+    <span class="glyphicon glyphicon-chevron-down pull-right c-maincolor"></span>
+  </a>
+  <div id="menuOne" class="sublinks collapse">
+    <a class="list-group-item small"> 販売<span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span></a>
+    <a class="list-group-item small"> 購入<span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span></a>
+  </div>
+
+  <%= link_to new_item_path, class: "list-group-item" do %>
+    <span class="glyphicon glyphicon-pencil"></span> チケットを出品
+    <span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span>
+  <% end %>
+
+  <!-- #menuTwo -->
+  <a href="#menuTwo" class="list-group-item" data-toggle="collapse" data-target="#menuTwo" data-parent="#menu">
+    <span class="glyphicon glyphicon-cog"></span> 会員情報管理
+    <span class="glyphicon glyphicon-chevron-up pull-right c-maincolor"></span>
+  </a>
+  <div id="menuTwo" class="sublinks collapse in">
+    <a class="list-group-item small"> プロフィールを編集<span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span></a>
+  </div>
+</div>
