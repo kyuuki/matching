@@ -1,43 +1,167 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% content_for :title do %>
+プロフィールを編集
+<% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<% content_for :js do %>
+<script>
+  $(function() {
+    $("#user_birthday").datepicker({ dateFormat: "yy-mm-dd", defaultDate: "1990-01-01"});
+  });
+</script>
+<% end %>
+
+<h3 class="text-center section__title-sub2">プロフィールを編集</h3>
+
+<div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <p>TODO: 入力フォームのデザイン未適用。</p>
+  <p>TODO: 生年月日の入力方法要検討。</p>
+</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="form-group text-left">
+    <%= f.label :email, class: "control-label col-xs-3" %>
+    <div class="col-xs-7">
+      <%= f.email_field :email, autofocus: true, class: "form-control" %>
+    </div>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <div class="form-group text-left">
+    <%= f.label :password, class: "control-label col-xs-3" %>
+    <div class="col-xs-5">
+      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="form-group text-left">
+    <%= f.label :password_confirmation, class: "control-label col-xs-3"  %>
+    <div class="col-xs-5">
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      <% if @minimum_password_length %>
+        <em><%= @minimum_password_length %> 文字以上</em>
+      <% end %>
+      <i>(パスワードを変更しない場合は空白)</i>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+  <div class="form-group text-left">
+    <%= f.label :account_name, class: "control-label col-xs-3" %>
+    <div class="col-xs-5">
+      <%= f.text_field :account_name, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="form-group text-left">
+    <%= f.label :last_name, class: "control-label col-xs-3" %>
+    <div class="col-xs-3">
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+  </div>
+
+  <%= f.fields_for :japan_user do |japan_user_form| %>
+  <div class="form-group text-left">
+    <%= japan_user_form.label :last_name_kana, class: "control-label col-xs-3" %>
+    <div class="col-xs-3">
+      <%= japan_user_form.text_field :last_name_kana, class: "form-control" %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="form-group text-left">
+    <%= f.label :first_name, class: "control-label col-xs-3" %>
+    <div class="col-xs-3">
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+  </div>
+
+  <%= f.fields_for :japan_user do |japan_user_form| %>
+  <div class="form-group text-left">
+    <%= japan_user_form.label :first_name_kana, class: "control-label col-xs-3" %>
+    <div class="col-xs-3">
+      <%= japan_user_form.text_field :first_name_kana, class: "form-control" %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="form-group text-left">
+    <%= f.label :sex, class: "control-label col-xs-3" %>
+    <div class="col-xs-3">
+      <div class="radio-inline">
+        <%= f.radio_button :sex, 1 %> <label for="user_sex_1">男性</label>
+      </div>
+      <div class="radio-inline">
+        <%= f.radio_button :sex, 2 %> <label for="user_sex_2">女性</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <%= f.label :birthday, class: "control-label col-xs-3" %>
+    <div class="col-xs-3">
+      <%= f.text_field :birthday, class: "form-control" %>
+    </div>
+  </div>
+
+  <%= f.fields_for :japan_user do |japan_user_form| %>
+  <div class="form-group text-left">
+    <%= japan_user_form.label :japan_prefecture, class: "control-label col-xs-3" %>
+    <div class="col-xs-3">
+      <%= japan_user_form.collection_select :japan_prefecture_id, JapanPrefecture.all, :id, :name, {}, { class: "form-control" } %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="form-group text-left">
+    <%= f.label :address2, class: "control-label col-xs-3" %>
+    <div class="col-xs-7">
+      <%= f.text_field :address2, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <%= f.label :address3, class: "control-label col-xs-3" %>
+    <div class="col-xs-7">
+      <%= f.text_field :address3, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <%= f.label :phone, class: "control-label col-xs-3" %>
+    <div class="col-xs-5">
+      <%= f.text_field :phone, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <%= f.label :phone_mobile, class: "control-label col-xs-3" %>
+    <div class="col-xs-5">
+      <%= f.text_field :phone_mobile, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <%= f.label :profile, class: "control-label col-xs-3" %>
+    <div class="col-xs-7">
+      <%= f.text_area :profile, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <%= f.label :profile_image, class: "control-label col-xs-3" %>
+    <div class="col-xs-7">
+      <%= f.file_field :profile_image %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-12 text-center">
+      <%= f.submit "更新する", class: "btn btn-danger" %>
+    </div>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

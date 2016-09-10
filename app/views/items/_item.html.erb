@@ -5,25 +5,25 @@
                    <dl>
                        <dt>
                          <%= link_to item do %>
-                           <img class="job-panel__profile-img" src="/images/prof_img2.jpg" alt="プロフィール写真">
+                           <%= image_tag item.user.profile_image.url, class: "job-panel__profile-img", size: "80x80", alt: "プロフィール写真" %>
                          <% end %>
                        </dt>
                        <dd>
                          <%= link_to item do %>
-                           <p><%= item.user.id %> 番目の人</p>
+                           <p><%= item.user.account_name.nil? ? "(アカウント名未登録)" : item.user.account_name %></p>
                          <% end %>
                        </dd>
                    </dl>
                 </div>
                 <div class="col-sm-8">
                     <%= link_to item do %>
-                      <p>プロフィールプロフィールプロフィールプロフィ</p>
+                      <p><%= item.user.profile.nil? ? "(プロフィール未登録)" : item.user.profile %></p>
                     <% end %>
                 </div>
            </div>
                <div class="panel-body">
                  <h4 class="job-panel__title">
-                     <%= link_to item.detail, item %>
+                     <%= link_to item.detail.nil? ? "(タイトルなし)" : item.detail, item %>
                  </h4>
                     <ul class="job-panel__timePlace">
                         <li><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>東京</li>
@@ -39,7 +39,7 @@
                      </div>
                      <div class="col-md-4 job-panel__list">
                        <p class="text-center c-small-text">料金</p>
-                       <p class="text-center c-big-text"><span class="c-small-text">￥</span><%= item.price %><span class="c-small-text">-</span></p>  
+                       <p class="text-center c-big-text"><span class="c-small-text">￥</span><%= number_with_delimiter(item.price) %><span class="c-small-text">-</span></p>  
                      </div>
               </div> 
            <div class="panel-footer text-center">

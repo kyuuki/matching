@@ -80,7 +80,7 @@
 
 <section class="section c-bg-dark c-border-r c-border-l">
     <div class="container">
-      <p class="c-bold c-padding-top-large">123枚のチケットが見つかりました</p>
+      <p class="c-bold c-padding-top-large"><%= @items.size %> 枚のチケットが見つかりました</p>
 
   <% @items.each_slice(3) do |items| %>
     <div class="row">

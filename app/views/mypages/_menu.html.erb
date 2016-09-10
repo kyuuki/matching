@@ -25,6 +25,8 @@
     <span class="glyphicon glyphicon-chevron-up pull-right c-maincolor"></span>
   </a>
   <div id="menuTwo" class="sublinks collapse in">
-    <a class="list-group-item small"> プロフィールを編集<span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span></a>
+    <%= link_to edit_user_registration_path, class: "list-group-item small" do %>
+      プロフィールを編集<span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span>
+    <% end %>
   </div>
 </div>

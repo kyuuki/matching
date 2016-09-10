@@ -9,6 +9,22 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
+        account_name: アカウント名
+        first_name: 名
+        last_name: 姓
+        sex: 性別
+        birthday: 生年月日
+        address1: 住所 1
+        address2: 住所 2 (市区町村、番地)
+        address3: 住所 3 (ビル名)
+        phone: 電話番号
+        phone_mobile: 電話番号 (携帯)
+        profile: プロフィール
+        profile_image: プロフィール画像
+      japan_user:
+        japan_prefecture: 住所 1 (都道府県)
+        first_name_kana: 名 (カナ)
+        last_name_kana: 姓 (カナ)
       item:
         services: サービス内容
         detail: サービス内容詳細

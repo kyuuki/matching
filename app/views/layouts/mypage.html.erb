@@ -1,0 +1,33 @@
+<% content_for :content do %>
+
+<div class="jumbotron-underlayer">
+  <div class="jumbotron">
+    <div class="container">
+      <h2 class="text-center jumbotron-underlayer__title">マイページ</h2>
+    </div>
+  </div>
+</div>
+
+<div class="mypage c-bg-light c-border-t c-border-r c-border-l">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+              <p class="text-center"><%= image_tag current_user.profile_image.url, class: "mypage__profile-img c-w100", size: "216x216" %>
+              <p class="user-name text-center"><%= current_user.account_name %></p>
+
+              <div id="mypage__menu">
+                <%= render "mypages/menu" %>
+              </div><!-- .mypage__menu -->
+           </div>
+
+          <div class="col-md-9 c-bg-white mypage__main-col">
+            <section>
+              <%= yield %>
+            </section>
+          </div>
+       </div>
+    </div>
+</div><!-- .mypage -->
+<% end %>
+
+<%= render template: "layouts/application" %>

@@ -6,67 +6,61 @@
 <script src="/js/mypage.js" type="text/javascript"></script>
 <% end %>
 
-<div class="jumbotron-underlayer">
-  <div class="jumbotron">
-    <div class="container">
-      <h2 class="text-center jumbotron-underlayer__title">
-        マイページ
-      </h2>
-    </div>
-  </div>
+<div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <p>TODO: プロフィール画像未登録時に表示する画像。</p>
+  <p>TODO: マイページトップに表示するコンテンツ。</p>
 </div>
 
-<div class="mypage c-bg-light c-border-t c-border-r c-border-l">
-    <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-              <p class="text-center"><img class="mypage__profile-img c-w100" src="/images/prof_img2.jpg" alt=""></p>
-              <p class="user-name text-center"><%= current_user.id %> 番目の人</p>
-
-              <div id="mypage__menu">
-                <%= render "menu" %>
-              </div><!-- .mypage__menu -->
-           </div>
-
-          <div class="col-md-9 c-bg-white mypage__main-col">
-              <section>
-                       <h3 class="text-center section__title-sub2">タイトル</h3>
-                          <dl class="c-table">
-                              <dt>ユーザー名</dt>
-                              <dd><%= current_user.id %> 番目の人</dd>
-                           </dl>
-                           <dl class="c-table">
-                               <dt>メールアドレス</dt>
-                               <dd><%= current_user.email %></dd>
-                           </dl>
-                           <dl class="c-table">
-                               <dt>性別</dt>
-                               <dd>女</dd>
-                           </dl>
-                </section>
-                <section>
-                    <h3 class="text-center section__title-sub2">タイトル</h3>
-                      <form class="form-horizontal">
-                        <div class="form-group text-left">
-                            <label class="control-label col-xs-3">ユーザー名</label>
-                            <div class="col-xs-7">
-                                <input type="text" name="name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group text-left">
-                            <label class="control-label col-xs-3">メールアドレス</label>
-                            <div class="col-xs-7">
-                                <input type="text" name="name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 text-center">
-                                <button type="submit" class="btn btn-danger">更新する</button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
+<section>
+       <h3 class="text-center section__title-sub2">タイトル</h3>
+          <dl class="c-table">
+              <dt>ユーザー名</dt>
+              <dd>
+                <% if current_user.account_name.nil? %>
+                  (未登録)
+                <% else %>
+                  <%= current_user.account_name %>
+                <% end %>
+              </dd>
+           </dl>
+           <dl class="c-table">
+               <dt>メールアドレス</dt>
+               <dd><%= current_user.email %></dd>
+           </dl>
+           <dl class="c-table">
+               <dt>性別</dt>
+               <dd>
+                 <% if current_user.sex == 1 %>
+                   男
+                 <% elsif current_user.sex == 2 %>
+                   女
+                 <% else %>
+                   (未登録)
+                 <% end %>
+               </dd>
+           </dl>
+</section>
+<section>
+    <h3 class="text-center section__title-sub2">タイトル</h3>
+      <form class="form-horizontal">
+        <div class="form-group text-left">
+            <label class="control-label col-xs-3">ユーザー名</label>
+            <div class="col-xs-7">
+                <input type="text" name="name" class="form-control">
             </div>
-       </div>
-    </div>
-</div><!-- .mypage -->
+        </div>
+        <div class="form-group text-left">
+            <label class="control-label col-xs-3">メールアドレス</label>
+            <div class="col-xs-7">
+                <input type="text" name="name" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 text-center">
+                <button type="submit" class="btn btn-danger">更新する</button>
+            </div>
+        </div>
+    </form>
+</section>
+

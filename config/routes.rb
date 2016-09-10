@@ -5,12 +5,15 @@ Rails.application.routes.draw do
 
   resources :items, only: [ :index, :show, :new, :create ]
   resource :mypage, only: [ :show ] do
-    resources :users, only: [] do
+    resources :users, only: [ :index ] do
       resources :messages, only: [ :index, :create ]
     end
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'omniauth_callbacks'
+  }
   devise_for :admin_users
 
   # The priority is based upon order of creation: first created -> highest priority.

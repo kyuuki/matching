@@ -58,6 +58,10 @@ gem 'kaminari'
 gem 'ransack'
 gem 'cocoon'
 
+gem 'carrierwave'
+gem 'rmagick', :require => 'RMagick'  # http://blog.ruedap.com/2011/04/10/ruby-heroku-use-rmagick-bundler-require
+gem 'cloudinary'
+
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
