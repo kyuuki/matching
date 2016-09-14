@@ -138,8 +138,11 @@ end
 # チケット
 #
 if Item.count == 0
-  Item.create(user: user1, execution_time: 120, price: 3000, detail: "ネイル全般なんでもやります！")
-  Item.create(user: user2, execution_time: 30, price: 5000, detail: "霊能力を伝授し、能力開花へと導きます。")
-  Item.create(user: user3, execution_time: 60, price: 10000, detail: "資金0、ノースキルでも30日で15万円稼ぐ方法を伝授！")
+  Item.create(user: user1, execution_time: 120, price: 3000, title: "ネイル全般なんでもやります！",
+              detail: "ワンカラーに左右1本づつアート付きのシンプルネイル アートは全て手描きのフラットアートが選べます。たくさんあるカラーから素敵な自分らしい色を選んで下さい。")
+  Item.create(user: user2, execution_time: 30, price: 5000, title: "霊能力を伝授し、能力開花へと導きます。",
+              detail: "あなたの代から7代まで祟られるか、しっかりと祓いを行って弁財天の眷属である白蛇様から施しを受けるかあなた自身が決めてください。")
+  Item.create(user: user3, execution_time: 60, price: 10000, title: "資金0、ノースキルでも30日で15万円稼ぐ方法を伝授！",
+              detail: "副業で月100万円は当たり前。個人が企業を出しぬけるのが当たり前。ココならば安心の高収入が手に入ります。登録件数も激増中！")
 end
 

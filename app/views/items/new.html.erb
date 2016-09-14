@@ -32,6 +32,20 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <%= f.label :title, class: "col-md-2 control-label" %>
+      <div class="col-md-6">
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :detail, class: "col-md-2 control-label" %>
+      <div class="col-md-6">
+        <%= f.text_area :detail, class: "form-control" %>
+      </div>
+    </div>
+
     <div class="form-group item_available_japan_places">
       <%= f.label :item_available_japan_places, class: "col-md-2 control-label" %>
       <div class="col-md-8">
@@ -64,13 +78,6 @@
       <%= f.label :execution_time, class: "col-md-2 control-label" %>
       <div class="col-md-2">
         <%= f.number_field :execution_time, class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :detail, class: "col-md-2 control-label" %>
-      <div class="col-md-6">
-        <%= f.text_area :detail, class: "form-control" %>
       </div>
     </div>
 

@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160902072637) do
 
   create_table "items", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "title"
     t.text     "detail"
     t.integer  "execution_time"
     t.integer  "price"

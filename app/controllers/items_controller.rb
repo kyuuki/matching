@@ -37,6 +37,8 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit({service_ids: []}, :execution_time, :detail, :price)
+      params.require(:item).permit({ service_ids: [] }, :title, :detail, :execution_time, :price,
+                                   item_available_datetimes_attributes: [:id, :from, :to ],
+                                   item_available_japan_places_attributes: [:id, :japan_city_id ])
     end
 end
