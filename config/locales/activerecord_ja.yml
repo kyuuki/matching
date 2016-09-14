@@ -27,10 +27,11 @@ ja:
         last_name_kana: 姓 (カナ)
       item:
         services: サービス内容
-        detail: サービス内容詳細
-        item_available_japan_places: サービス提供可能場所
-        item_available_datetimes: サービス提供可能日時
-        execution_time: サービス施行時間
+        title: タイトル
+        detail: 詳細
+        item_available_japan_places: 提供可能場所
+        item_available_datetimes: 提供可能日時
+        execution_time: 施行時間
         price: 値段
       message:
         body: 本文
