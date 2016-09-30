@@ -1,10 +1,116 @@
+<% content_for :title do %>
+チケット登録
+<% end %>
+
+<% content_for :js do %>
+<link href="/css/datepicker.css" rel="stylesheet" type="text/css">
+<script src="/js/datepicker.min.js"></script>
+<script src="/js/datepicker_script.js"></script>
+<script>
+$(function() {
+  // 全ての都道府県 select にイベント登録
+  $('.nested-fields .s_jp').each(function() {
+    //refresh_select($(this));
+    $(this).change('click', function() {
+      get_city($(this).val(), $(this).next());
+    });
+  });
+
+  function refresh_select(select_prefecture) {
+    get_city(select_prefecture.val(), select_prefecture.next());
+    select_prefecture.change('click', function() {
+      get_city($(this).val(), $(this).next());
+    });
+  }
+
+  function get_city(japan_prefecture_id, select_city) {
+    $.ajax({
+      type: "GET",
+      url: "/japan_cities",
+      timeout: 10000,
+      cache: true,
+      dataType: "json",
+      data: {
+        japan_prefecture_id: japan_prefecture_id
+      },
+      success: function(response) {
+        data = response
+        apply_select_city(select_city, data);
+      }
+    });
+  }
+
+  function apply_select_city(select_city, data) {
+    select_city.children().remove();
+    select_city.append($("<option>").val("").text("市町村"));
+    for(var i = 0; i < data.length; i++) {
+      d = data[i];
+      select_city.append($("<option>").val(d.id).text(d.name));
+    }
+  }
+
+  // http://mikazuki.hatenablog.jp/entry/2016/03/26/040229
+  $('.item_available_japan_places a.remove_fields').hide();
+  $('.item_available_japan_places').on('cocoon:after-insert', function(e, insertedItem) {
+    check_japan_places();
+
+    insertedItem.find('.s_jp').each(function() {
+      refresh_select($(this));
+    });
+  });
+  $('.item_available_japan_places').on('cocoon:after-remove', function() {
+    check_japan_places();
+  });
+
+  function check_japan_places() {
+    if($('.item_available_japan_places .nested-fields').length == 5) {
+      $('.item_available_japan_places a.add_fields').hide();
+    } else {
+      $('.item_available_japan_places a.add_fields').show();
+    }
+  }
+
+  $('.item_available_datetimes a.remove_fields').hide();
+  $('.item_available_datetimes').on('cocoon:after-insert', function(e, added_task) {
+    check_datetimes();
+    added_task.find('.reserve-date').datepicker({
+        language: 'jpn',
+        timepicker: true,
+        minDate: new Date() // Now can select only dates, which goes after today
+    });
+  });
+  $('.item_available_datetimes').on('cocoon:after-remove', function() {
+    check_datetimes();
+  });
+
+  function check_datetimes() {
+    if($('.item_available_datetimes .nested-fields').length == 5) {
+      $('.item_available_datetimes a.add_fields').hide();
+    } else {
+      $('.item_available_datetimes a.add_fields').show();
+    }
+  }
+});
+</script>
+<% end %>
+
+<div class="jumbotron-underlayer">
+  <div class="jumbotron">
+    <div class="container">
+      <h2 class="text-center jumbotron-underlayer__title">
+        チケット登録
+      </h2>
+    </div>
+  </div>
+</div>
+
+<div class="c-border-t c-border-r c-border-l">
 <div class="container">
-  <h2 class="title page-header">チケット登録</h2>
+<div class="mypage__main-col">
 
   <div class="alert alert-dismissible alert-warning">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <p>TODO: チケット登録に必要な項目が登録されていない場合はユーザー登録追加画面を表示する。</p>
-    <p>TODO: 「サービス提供可能場所」「サービス提供可能日時」がまだ仮。</p>
   </div>
 
   <% if @item.errors.any? %>
@@ -60,7 +166,7 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group item_available_datetimes">
       <%= f.label :item_available_datetimes, class: "col-md-2 control-label" %>
       <div class="col-md-8">
         <div class="item_available_datetimes">
@@ -97,4 +203,6 @@
       </div>
     </div>
   <% end %>
+</div><!-- .mypage__main-col -->
+</div>
 </div>

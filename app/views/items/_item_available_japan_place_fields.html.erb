@@ -1,5 +1,5 @@
 <div class="nested-fields form-inline">
-  <%= collection_select :nil, :japan_prefecture_id, JapanPrefecture.all, :id, :name, {}, { class: "form-control" } %>
-  <%= f.collection_select :japan_city_id, JapanCity.all, :id, :name, {}, { class: "form-control" } %>
-  <%= link_to_remove_association "remove", f %>
+  <%= collection_select :s_jp, :japan_prefecture_id, JapanPrefecture.all, :id, :name, { selected: f.object.japan_city.try(:japan_prefecture_id), prompt: "都道府県" }, { class: "form-control s_jp" } %>
+  <%= f.collection_select :japan_city_id, JapanCity.where(japan_prefecture_id: f.object.japan_city.try(:japan_prefecture_id)), :id, :name, { selected: f.object.japan_city_id, prompt: "市町村" }, { class: "form-control" } %>
+  <%= link_to_remove_association "削除", f %>
 </div>

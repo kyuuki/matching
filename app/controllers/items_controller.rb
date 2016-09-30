@@ -16,8 +16,11 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_available_japan_places.build
-    @item.item_available_datetimes.build(from: Time.zone.now, to: Time.zone.now)
-    #@item.item_available_datetime_forms.build
+    now = Time.zone.now
+    from = Time.zone.local(now.year, now.month, now.day, now.hour, 0)
+    to = from + 1.hour
+    @item.item_available_datetimes.build(from: from, to: to)
+    #@item.item_available_datetime_forms.build  # 表示上は日付と時刻のフォームを別にしたい
   end
 
   def create
@@ -25,8 +28,19 @@ class ItemsController < ApplicationController
     @item.user = current_user
 
     if @item.save
-      redirect_to root_path
+      redirect_to @item, notice: "チケットを登録しました"  # TODO: 日本語依存
     else
+      # 最低限 1 つは入力ボックスをつける
+      if @item.item_available_japan_places.size == 0
+        @item.item_available_japan_places.build
+      end
+      if @item.item_available_datetimes.size == 0
+        now = Time.zone.now
+        from = Time.zone.local(now.year, now.month, now.day, now.hour, 0)
+        to = from + 1.hour
+        @item.item_available_datetimes.build(from: from, to: to)
+      end
+
       render :new
     end
   end
@@ -38,7 +52,7 @@ class ItemsController < ApplicationController
 
     def item_params
       params.require(:item).permit({ service_ids: [] }, :title, :detail, :execution_time, :price,
-                                   item_available_datetimes_attributes: [:id, :from, :to ],
-                                   item_available_japan_places_attributes: [:id, :japan_city_id ])
+                                   item_available_datetimes_attributes: [:id, :from, :to, :_destroy ],
+                                   item_available_japan_places_attributes: [:id, :japan_city_id, :_destroy ])
     end
 end

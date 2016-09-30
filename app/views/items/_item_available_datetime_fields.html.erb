@@ -1,4 +1,4 @@
 <div class="nested-fields form-inline">
-  <%= f.text_field :from, class: "form-control" %> ～ <%= f.text_field :to, class: "form-control" %>
-  <%= link_to_remove_association "remove", f %>
+  <%= f.text_field :from, value: f.object.from.try(:strftime, '%Y-%m-%d %H:%M'), class: "form-control reserve-date" %> ～ <%= f.text_field :to, value: f.object.to.try(:strftime, '%Y-%m-%d %H:%M'), class: "form-control reserve-date" %>
+  <%= link_to_remove_association "削除", f %>
 </div>

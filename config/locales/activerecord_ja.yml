@@ -33,5 +33,19 @@ ja:
         item_available_datetimes: 提供可能日時
         execution_time: 施行時間
         price: 値段
+      item/item_available_datetimes:
+        from: 提供可能日時 (開始)
+        to: 提供可能日時 (終了)
       message:
         body: 本文
+    errors:
+      models:
+        item:
+          attributes:
+            services:
+              too_short: "は %{count} つ以上チェックしてください"
+            item_available_datetimes:
+              too_short: "は %{count} つ以上登録してください"
+            item_available_japan_places:
+              too_short: "は %{count} つ以上登録してください"
+

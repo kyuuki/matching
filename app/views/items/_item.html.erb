@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-sm-8">
                     <%= link_to item do %>
-                      <p><%= item.user.profile.nil? ? "(プロフィール未登録)" : item.user.profile %></p>
+                      <p><%= item.user.profile.nil? ? "(プロフィール未登録)" : item.user.profile.truncate(30) %></p>
                     <% end %>
                 </div>
            </div>
@@ -26,8 +26,17 @@
                      <%= link_to item.title.nil? ? "(タイトルなし)" : item.title, item %>
                  </h4>
                     <ul class="job-panel__timePlace">
-                        <li><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>東京</li>
-                        <li><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>今日, 7/30 11:00-</li>
+                        <li>
+                          <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>
+                          <%= item.japan_cities.map {|c| c.japan_prefecture.name }.join(", ") %>
+                        </li>
+                        <li>
+                          <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>
+                          <% item.item_available_datetimes.each_with_index do |datetime, index| %>
+                            <%= ", " if index != 0 %>
+                            <%= datetime.to_string_short %>
+                          <% end %>
+                        </li>
                     </ul>
                      <div class="col-md-3 job-panel__list">
                        <p class="text-center c-small-text">購入</p>
