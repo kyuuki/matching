@@ -11,6 +11,9 @@ class ItemsController < ApplicationController
 
     # メッセージ送信
     @message = Message.new
+
+    # 予約
+    @appointment = Appointment.new
   end
 
   def new

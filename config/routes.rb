@@ -4,19 +4,21 @@ Rails.application.routes.draw do
   get 'terms' => 'welcome#terms'
 
   resources :items, only: [ :index, :show, :new, :create ]
+  resources :appointments, only: [ :show, :create ]
   resource :mypage, only: [ :show ] do
     resources :users, only: [ :index ] do
       resources :messages, only: [ :index, :create ]
     end
   end
 
-  resources :japan_cities, only: [ :index ]
-
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'omniauth_callbacks'
   }
   devise_for :admin_users
+
+  # API
+  resources :japan_cities, only: [ :index ]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

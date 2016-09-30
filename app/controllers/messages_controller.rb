@@ -35,7 +35,7 @@ class MessagesController < ApplicationController
       receiver = User.find(params[:user_id])
 
       if current_user.id == receiver.id
-        redirect_to root_path
+        redirect_to root_path, notice: "自分にメッセージは送れません。"  # TODO: 多言語
       end
     end
 end

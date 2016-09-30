@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902072637) do
+ActiveRecord::Schema.define(version: 20160930125455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,28 @@ ActiveRecord::Schema.define(version: 20160902072637) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer  "item_id",                    null: false
+    t.integer  "user_id",                    null: false
+    t.string   "place"
+    t.datetime "datetime",                   null: false
+    t.text     "memo"
+    t.integer  "star"
+    t.text     "review"
+    t.string   "item_title"
+    t.text     "item_detail"
+    t.integer  "item_execution_time"
+    t.integer  "item_price"
+    t.string   "item_service"
+    t.string   "item_available_datetime"
+    t.string   "item_available_japan_place"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "appointments", ["item_id"], name: "index_appointments_on_item_id", using: :btree
+  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id", using: :btree
 
   create_table "item_available_datetimes", force: :cascade do |t|
     t.integer  "item_id"
@@ -153,6 +175,8 @@ ActiveRecord::Schema.define(version: 20160902072637) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "appointments", "items"
+  add_foreign_key "appointments", "users"
   add_foreign_key "item_available_datetimes", "items"
   add_foreign_key "item_available_japan_places", "items"
   add_foreign_key "item_available_japan_places", "japan_cities"
