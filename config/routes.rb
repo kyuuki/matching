@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   get 'terms' => 'welcome#terms'
 
   resources :items, only: [ :index, :show, :new, :create ]
-  resources :appointments, only: [ :show, :create ]
+  resources :appointments, only: [ :index, :show, :create ]
   resource :mypage, only: [ :show ] do
     resources :users, only: [ :index ] do
       resources :messages, only: [ :index, :create ]
     end
+    resources :items, only: [ :index ], controller: 'mypage/items'  # http://docs.komagata.org/4905
+    resources :appointments, only: [ :index ], controller: 'mypage/appointments'
   end
 
   devise_for :users, controllers: {

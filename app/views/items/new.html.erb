@@ -94,115 +94,100 @@ $(function() {
 </script>
 <% end %>
 
-<div class="jumbotron-underlayer">
-  <div class="jumbotron">
-    <div class="container">
-      <h2 class="text-center jumbotron-underlayer__title">
-        チケット登録
-      </h2>
-    </div>
-  </div>
+<h3 class="text-center section__title-sub2">チケット登録</h3>
+
+<div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <p>TODO: チケット登録に必要な項目が登録されていない場合はユーザー登録追加画面を表示する。</p>
 </div>
 
-<div class="c-border-t c-border-r c-border-l">
-<div class="container">
-<div class="mypage__main-col">
+<% if @item.errors.any? %>
+<div class="alert alert-error alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <ul>
+    <% @item.errors.full_messages.each do |msg| %>
+    <li><%= msg %>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="alert alert-dismissible alert-warning">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <p>TODO: チケット登録に必要な項目が登録されていない場合はユーザー登録追加画面を表示する。</p>
-  </div>
-
-  <% if @item.errors.any? %>
-  <div class="alert alert-error alert-danger">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <ul>
-      <% @item.errors.full_messages.each do |msg| %>
-      <li><%= msg %>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-
-  <%= form_for(@item, html: { class: "form-horizontal" }) do |f| %>
-    <div class="form-group">
-      <%= f.label :services, class: "col-md-2 control-label" %>
-      <div class="col-md-6">
-        <div class="form-inline">
-        <%= f.collection_check_boxes(:service_ids, Service.all, :id, :name) do |b| %>
-           <div class="checkbox">
-             <%= b.label { b.check_box + " " + b.text } %>
-           </div>
-        <% end %>
+<%= form_for(@item, html: { class: "form-horizontal" }) do |f| %>
+  <div class="form-group">
+    <%= f.label :services, class: "col-md-2 control-label" %>
+    <div class="col-md-6">
+      <div class="form-inline">
+      <%= f.collection_check_boxes(:service_ids, Service.all, :id, :name) do |b| %>
+         <div class="checkbox">
+           <%= b.label { b.check_box + " " + b.text } %>
          </div>
-      </div>
+      <% end %>
+       </div>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :title, class: "col-md-2 control-label" %>
-      <div class="col-md-6">
-        <%= f.text_field :title, class: "form-control" %>
-      </div>
+  <div class="form-group">
+    <%= f.label :title, class: "col-md-2 control-label" %>
+    <div class="col-md-6">
+      <%= f.text_field :title, class: "form-control" %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :detail, class: "col-md-2 control-label" %>
-      <div class="col-md-6">
-        <%= f.text_area :detail, class: "form-control" %>
-      </div>
+  <div class="form-group">
+    <%= f.label :detail, class: "col-md-2 control-label" %>
+    <div class="col-md-6">
+      <%= f.text_area :detail, class: "form-control" %>
     </div>
+  </div>
 
-    <div class="form-group item_available_japan_places">
-      <%= f.label :item_available_japan_places, class: "col-md-2 control-label" %>
-      <div class="col-md-8">
-        <div class="item_available_japan_places">
-          <%= f.fields_for :item_available_japan_places do |form| %>
-            <%= render "item_available_japan_place_fields", f: form %>
-          <% end %>
-        </div>
-        <div class="links">
-          <%= link_to_add_association "追加", f, :item_available_japan_places %>
-        </div>
+  <div class="form-group item_available_japan_places">
+    <%= f.label :item_available_japan_places, class: "col-md-2 control-label" %>
+    <div class="col-md-8">
+      <div class="item_available_japan_places">
+        <%= f.fields_for :item_available_japan_places do |form| %>
+          <%= render "item_available_japan_place_fields", f: form %>
+        <% end %>
+      </div>
+      <div class="links">
+        <%= link_to_add_association "追加", f, :item_available_japan_places %>
       </div>
     </div>
+  </div>
 
-    <div class="form-group item_available_datetimes">
-      <%= f.label :item_available_datetimes, class: "col-md-2 control-label" %>
-      <div class="col-md-8">
-        <div class="item_available_datetimes">
-          <%= f.fields_for :item_available_datetimes do |form| %>
-            <%= render "item_available_datetime_fields", f: form %>
-          <% end %>
-        </div>
-        <div class="links">
-          <%= link_to_add_association "追加", f, :item_available_datetimes %>
-        </div>
+  <div class="form-group item_available_datetimes">
+    <%= f.label :item_available_datetimes, class: "col-md-2 control-label" %>
+    <div class="col-md-8">
+      <div class="item_available_datetimes">
+        <%= f.fields_for :item_available_datetimes do |form| %>
+          <%= render "item_available_datetime_fields", f: form %>
+        <% end %>
+      </div>
+      <div class="links">
+        <%= link_to_add_association "追加", f, :item_available_datetimes %>
       </div>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :execution_time, class: "col-md-2 control-label" %>
-      <div class="col-md-2">
-        <%= f.select :execution_time,
-            { "30 分" => 30, "1 時間" => 60, "1 時間半" => 90, "2 時間" => 120, "2 時間半" => 150, "3 時間" => 180 },
-            { include_blank: true },
-            { class: "form-control" } %>
-      </div>
+  <div class="form-group">
+    <%= f.label :execution_time, class: "col-md-2 control-label" %>
+    <div class="col-md-2">
+      <%= f.select :execution_time,
+          { "30 分" => 30, "1 時間" => 60, "1 時間半" => 90, "2 時間" => 120, "2 時間半" => 150, "3 時間" => 180 },
+          { include_blank: true },
+          { class: "form-control" } %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :price, class: "col-md-2 control-label" %>
-      <div class="col-md-2">
-        <%= f.number_field :price, class: "form-control" %>
-      </div>
+  <div class="form-group">
+    <%= f.label :price, class: "col-md-2 control-label" %>
+    <div class="col-md-2">
+      <%= f.number_field :price, class: "form-control" %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <div class="col-md-6 col-md-offset-2">
-        <%= f.submit "登録", class: "btn btn-large btn-primary" %>
-      </div>
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-2">
+      <%= f.submit "登録", class: "btn btn-large btn-primary" %>
     </div>
-  <% end %>
-</div><!-- .mypage__main-col -->
-</div>
-</div>
+  </div>
+<% end %>

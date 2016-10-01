@@ -24,6 +24,8 @@ class ItemsController < ApplicationController
     to = from + 1.hour
     @item.item_available_datetimes.build(from: from, to: to)
     #@item.item_available_datetime_forms.build  # 表示上は日付と時刻のフォームを別にしたい
+
+    render layout: "mypage"
   end
 
   def create
@@ -31,7 +33,8 @@ class ItemsController < ApplicationController
     @item.user = current_user
 
     if @item.save
-      redirect_to @item, notice: "チケットを登録しました"  # TODO: 日本語依存
+      #redirect_to @item, notice: "チケットを登録しました"  # TODO: 日本語依存
+      redirect_to mypage_items_path, notice: "チケットを登録しました"  # TODO: 日本語依存
     else
       # 最低限 1 つは入力ボックスをつける
       if @item.item_available_japan_places.size == 0
@@ -44,7 +47,7 @@ class ItemsController < ApplicationController
         @item.item_available_datetimes.build(from: from, to: to)
       end
 
-      render :new
+      render :new, layout: "mypage"
     end
   end
 

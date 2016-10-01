@@ -29,4 +29,14 @@
       プロフィールを編集<span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span>
     <% end %>
   </div>
+
+  <%= link_to mypage_appointments_path, class: "list-group-item" do %>
+    <span class="glyphicon glyphicon-briefcase"></span> 購入したチケット
+    <span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span>
+  <% end %>
+
+  <%= link_to mypage_items_path, class: "list-group-item" do %>
+    <span class="glyphicon glyphicon-scissors"></span> 出品したチケット
+    <span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span>
+  <% end %>
 </div>

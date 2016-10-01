@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
     end
 
     if appointment.save
-      redirect_to mypage_path, notice: "予約完了しました。"  # TODO: 多言語
+      redirect_to mypage_appointments_path, notice: "予約完了しました。"  # TODO: 多言語
     else
       # 一つ前が item ページという前提
       @item = appointment.item
