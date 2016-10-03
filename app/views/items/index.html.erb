@@ -21,13 +21,11 @@
                 <label>
                 <select id="tab-service" name='tab-service'>
                     <option value="">サービス内容</option>
-                    <optgroup label="ネイル">
-                    <option value="nail-color">ネイルカラー</option>
-                    <option value="nail-jel">ネイルジェル</option>
-                    <optgroup label="フェイス">
-                    <option value="">選択肢03</option>
-                    <option value="">選択肢04</option>
-                    <option value="">選択肢05</option>
+                    <optgroup>
+                    <%= Service.all.each do |service| %>
+                      <option value="<%= service.id %>"><%= service.name %></option>
+                    <% end %>
+                    </optgroup>
                 </select>
                 </label>
             </div>
@@ -36,38 +34,35 @@
                 <label>
                 <select id="tab-area" name='tab-area'>
                     <option value="">エリア</option>
-                    <optgroup label="北海道">
-                    <option value="Hokkaido">北海道</option>
-                    <optgroup label="北東北">
-                    <option value="Aomori">青森県</option>
-                    <option value="Akita">秋田県</option>
-                    <option value="">選択肢04</option>
-                    <option value="">選択肢05</option>
+                    <optgroup>
+                    <%= JapanPrefecture.all.each do |japan_prefecture| %>
+                      <option value="<%= japan_prefecture.id %>"><%= japan_prefecture.name %></option>
+                    <% end %>
+                    </optgroup>
                 </select>
                 </label>
             </div>
            </div><!-- .p-itens-search-tab -->
-         </div>   
+         </div>
 
          <div class="p-items-search-tab__selected-tab"> 
                 <ul class="selected-tab__item">
-                     <li><a class="selected-tab__item-close">テスト</a></li>
                  </ul>
         </div>
 
 
          <div class="text-center">
-           <div class="p-items-search-tab"> 
+           <div class="p-items-search-tab tab-date"> 
                 <div class="select-box select-box__right pull-right">
-                    <p class="p-search-tab__tomorrow">明日</p>
+                    <p class="p-search-tab__tomorrow" data-date="tomorrow">明日</p>
                 </div>
 
                 <div class="select-box pull-right">
-                    <p class="p-search-tab__today">今日</p>
+                    <p class="p-search-tab__today" data-date="today">今日</p>
                 </div>
 
                 <div class="select-box select-box__left pull-right">
-                    <p class="p-search-tab__all active">すべて</p>
+                    <p class="p-search-tab__all active" data-date="">すべて</p>
                 </div>
            </div><!-- .p-itens-search-tab -->
          </div>   
@@ -75,19 +70,10 @@
     </div>
   </div><!-- .p-search_area -->
 
-
-
-
 <section class="section c-bg-dark c-border-r c-border-l">
-    <div class="container">
-      <p class="c-bold c-padding-top-large"><%= @items.size %> 枚のチケットが見つかりました</p>
-
-  <% @items.each_slice(3) do |items| %>
-    <div class="row">
-      <%= render items %>
-    </div>
-  <% end %>
- </div>    
+  <div id="list">
+    <%= render "list", items: @items %>
+  </div>
 </section>
 
 <%= render "shared/voice" %>

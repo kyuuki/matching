@@ -3,7 +3,37 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
 
   def index
-    @items = Item.order(id: :desc).all
+    @items = Item.all.order(id: :desc)
+  end
+
+  def list
+    # 検索条件: サービス内容
+    param_services = params["services"]
+    # 検索条件: 提供可能場所 (これは過去のを含めると大量)
+    param_date = params["date"]
+    # 検索条件: 提供可能日時 (これは多くならない)
+    param_japan_prefectures = params["japan_prefectures"]
+
+    # TODO: 検索条件のパラメータをどうするか
+    query = Item.includes(:services, :item_available_datetimes, :japan_cities)
+    if not (param_services.nil? or param_services.size == 0)
+      query = query.where(services: {id: param_services})
+    end
+    if not param_date.nil?
+      now = Time.zone.now
+      if param_date == "today"
+        query = query.where(item_available_datetimes: { from: now.beginning_of_day..now.end_of_day })
+      elsif param_date == "tomorrow"
+        query = query.where(item_available_datetimes: { from: now.tomorrow.beginning_of_day..now.tomorrow.end_of_day })
+      end
+    end
+    if not (param_japan_prefectures.nil? or param_japan_prefectures.size == 0)
+      query = query.where(japan_cities: { japan_prefecture_id: param_japan_prefectures })
+    end
+
+    @items = query.order(id: :desc)
+
+    render layout: false
   end
 
   def show

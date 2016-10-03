@@ -1,0 +1,9 @@
+ <div class="container">
+   <p class="c-bold c-padding-top-large"><%= items.size %> 枚のチケットが見つかりました</p>
+
+   <% items.each_slice(3) do |is| %>
+     <div class="row">
+       <%= render is %>
+     </div>
+   <% end %>
+</div>
