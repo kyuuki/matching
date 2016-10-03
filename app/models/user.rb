@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   # Validation
   #validates :email, presence: true  # Devise 側でやってる
   validates :account_name,
-    format: { with: /\A[A-Za-z0-9_\-]+\z/ }
+    format: { with: /\A[A-Za-z0-9_\-]+\z/ },
+    allow_nil: true
   validates :sex,
     inclusion: { in: [1, 2] },
     allow_nil: true
