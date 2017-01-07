@@ -13,9 +13,10 @@
  */
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 html {
-  font-family: sans-serif;
+    font-family: sans-serif;'Noto Sans JP', sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -6015,12 +6016,14 @@ tbody.collapse.in {
   color: #222;
   background-color: transparent;
 }
+/*
 .navbar-default .navbar-toggle {
   border-color: #ddd;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
   background-color: #ddd;
 }
+*/
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #888;
 }
@@ -6796,7 +6799,7 @@ button.list-group-item {
   z-index: 2;
   color: #fff;
   background-color: #3b9ae0;
-  border-color: #3b9ae0;
+  /*border-color: #3b9ae0;*/
 }
 .list-group-item.active .list-group-item-heading,
 .list-group-item.active .list-group-item-heading > small,
@@ -8395,7 +8398,7 @@ a {
 }
 
 .navbar.navbar-default, .navbar.navbar-inverse {
-  background-color: rgba(255, 255, 255, .9);
+  background-color: rgba(255, 255, 255, 1);
   border: 0;
   border-bottom: 1px solid #3b9ae0;
 }
