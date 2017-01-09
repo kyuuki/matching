@@ -1,27 +1,31 @@
-<div class="container">
+<% content_for :title do %>
+ユーザー登録
+<% end %>
 
-<h2 class="title">ユーザー登録</h2>
+<div class="p-search_area c-border-t c-border-r c-border-l">
+  <div class="container">
+    <h3 class="text-center section__title-sub2">ユーザー登録</h3>
 
-<div class="alert alert-dismissible alert-warning">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <p>TODO: デザイン未適用。ダイアログ表示でのログインは時間がかかりそう。</p>
-  <p>TODO: Twitter, Facebook ログイン未実装。</p>
-</div>
+    <div class="alert alert-dismissible alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p>TODO: デザイン未適用。ダイアログ表示でのログインは時間がかかりそう。</p>
+      <p>TODO: Twitter, Facebook ログイン未実装。</p>
+    </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
              html: { class: "form-horizontal" }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form-group">
-    <%= f.label :email, class: "col-md-3 control-label" %>
-    <div class="col-md-6">
+    <%= f.label :email, class: "col-md-2 control-label" %>
+    <div class="col-md-4">
       <%= f.email_field :email, autofocus: true, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :password, class: "col-md-3 control-label" %>
-    <div class="col-md-6">
+    <%= f.label :password, class: "col-md-2 control-label" %>
+    <div class="col-md-4">
       <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> 文字以上)</em>
@@ -30,25 +34,25 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation, class: "col-md-3 control-label" %>
-    <div class="col-md-6">
+    <%= f.label :password_confirmation, class: "col-md-2 control-label" %>
+    <div class="col-md-4">
       <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-10 col-md-offset-2">
       <%= f.submit "登録", class: "btn btn-large btn-primary" %>
     </div>
   </div>
 
-  <br>
-
+  <!--
   <div class="form-group">
     <div class="col-md-6 col-md-offset-3">
       <%= render "users/shared/links" %>
     </div>
   </div>
+  -->
 <% end %>
 
 </div>
