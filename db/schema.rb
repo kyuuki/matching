@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160930125455) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -25,14 +22,14 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "item_id",                    null: false
@@ -53,8 +50,8 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "appointments", ["item_id"], name: "index_appointments_on_item_id", using: :btree
-  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id", using: :btree
+  add_index "appointments", ["item_id"], name: "index_appointments_on_item_id"
+  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id"
 
   create_table "item_available_datetimes", force: :cascade do |t|
     t.integer  "item_id"
@@ -64,7 +61,7 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "item_available_datetimes", ["item_id"], name: "index_item_available_datetimes_on_item_id", using: :btree
+  add_index "item_available_datetimes", ["item_id"], name: "index_item_available_datetimes_on_item_id"
 
   create_table "item_available_japan_places", force: :cascade do |t|
     t.integer  "item_id"
@@ -73,8 +70,8 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "item_available_japan_places", ["item_id"], name: "index_item_available_japan_places_on_item_id", using: :btree
-  add_index "item_available_japan_places", ["japan_city_id"], name: "index_item_available_japan_places_on_japan_city_id", using: :btree
+  add_index "item_available_japan_places", ["item_id"], name: "index_item_available_japan_places_on_item_id"
+  add_index "item_available_japan_places", ["japan_city_id"], name: "index_item_available_japan_places_on_japan_city_id"
 
   create_table "item_services", force: :cascade do |t|
     t.integer  "item_id"
@@ -83,8 +80,8 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "item_services", ["item_id"], name: "index_item_services_on_item_id", using: :btree
-  add_index "item_services", ["service_id"], name: "index_item_services_on_service_id", using: :btree
+  add_index "item_services", ["item_id"], name: "index_item_services_on_item_id"
+  add_index "item_services", ["service_id"], name: "index_item_services_on_service_id"
 
   create_table "items", force: :cascade do |t|
     t.integer  "user_id"
@@ -96,7 +93,7 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
+  add_index "items", ["user_id"], name: "index_items_on_user_id"
 
   create_table "japan_cities", force: :cascade do |t|
     t.integer  "japan_prefecture_id"
@@ -106,7 +103,7 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "japan_cities", ["japan_prefecture_id"], name: "index_japan_cities_on_japan_prefecture_id", using: :btree
+  add_index "japan_cities", ["japan_prefecture_id"], name: "index_japan_cities_on_japan_prefecture_id"
 
   create_table "japan_prefectures", force: :cascade do |t|
     t.string   "code"
@@ -124,8 +121,8 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "japan_users", ["japan_prefecture_id"], name: "index_japan_users_on_japan_prefecture_id", using: :btree
-  add_index "japan_users", ["user_id"], name: "index_japan_users_on_user_id", using: :btree
+  add_index "japan_users", ["japan_prefecture_id"], name: "index_japan_users_on_japan_prefecture_id"
+  add_index "japan_users", ["user_id"], name: "index_japan_users_on_user_id"
 
   create_table "messages", force: :cascade do |t|
     t.integer  "sender_id"
@@ -135,9 +132,9 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
-  add_index "messages", ["sender_id", "receiver_id"], name: "index_messages_on_sender_id_and_receiver_id", using: :btree
-  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
+  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id"
+  add_index "messages", ["sender_id", "receiver_id"], name: "index_messages_on_sender_id_and_receiver_id"
+  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id"
 
   create_table "services", force: :cascade do |t|
     t.string   "name"
@@ -154,8 +151,8 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "account_name"
@@ -172,18 +169,7 @@ ActiveRecord::Schema.define(version: 20160930125455) do
     t.string   "profile_image"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  add_foreign_key "appointments", "items"
-  add_foreign_key "appointments", "users"
-  add_foreign_key "item_available_datetimes", "items"
-  add_foreign_key "item_available_japan_places", "items"
-  add_foreign_key "item_available_japan_places", "japan_cities"
-  add_foreign_key "item_services", "items"
-  add_foreign_key "item_services", "services"
-  add_foreign_key "items", "users"
-  add_foreign_key "japan_cities", "japan_prefectures"
-  add_foreign_key "japan_users", "japan_prefectures"
-  add_foreign_key "japan_users", "users"
 end
