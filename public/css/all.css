@@ -778,6 +778,7 @@ a.c-link-indifferent {
 }
 
 /*–  サインインとサインアップ —*/
+/*
 .modal-overlay {
   z-index: 998;
   display: none;
@@ -848,6 +849,7 @@ a.modal-close {
 a.modal-close:hover {
   cursor: pointer;
 }
+*/
 
 /*–  無料トライアル —*/
 .p-customer-voice__avater {
