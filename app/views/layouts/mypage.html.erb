@@ -11,20 +11,30 @@
 <div class="mypage c-bg-light c-border-t c-border-r c-border-l">
     <div class="container">
         <div class="row">
-          <div class="col-md-3">
-              <p class="text-center"><%= image_tag current_user.profile_image.url, class: "mypage__profile-img c-w100", size: "216x216" %>
-              <p class="user-name text-center"><%= current_user.account_name %></p>
+          <div class="col-md-9 col-md-push-3 c-bg-white mypage__main-col">
+            <%= yield %>
+          </div>
+          <div class="col-md-3 col-md-pull-9">
+              <p class="text-center">
+                <% if current_user.profile_image.url.nil? %>
+                  <%= image_tag "/images/prof_img2.jpg", class: "mypage__profile-img c-w100", size: "216x216" %>
+                <% else %>
+                  <%= image_tag current_user.profile_image.url, class: "mypage__profile-img c-w100", size: "216x216" %>
+                <% end %>
+              </p>
+              <p class="user-name text-center">
+                <% if current_user.account_name.nil? %>
+                  (ユーザー名 未登録)
+                <% else %>
+                  <%= current_user.account_name %>
+                <% end %>
+              </p>
 
               <div id="mypage__menu">
                 <%= render "mypages/menu" %>
               </div><!-- .mypage__menu -->
            </div>
 
-          <div class="col-md-9 c-bg-white mypage__main-col">
-            <section>
-              <%= yield %>
-            </section>
-          </div>
        </div>
     </div>
 </div><!-- .mypage -->
