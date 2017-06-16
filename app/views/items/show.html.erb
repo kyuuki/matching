@@ -57,23 +57,25 @@
                 </dl>        
                 
                 <div class="job-detail-box__item-info row">
-                    <div class="col-md-6 job-panel__list text-center">
+                    <div class="col-md-12 job-panel__list text-center">
                        <p>購入</p>
                        <p class="c-big-text"><%= @item.appointments.size %></p>
                     </div>
+                    <!--
                     <div class="col-md-6 job-panel__list text-center">
                        <p>評価</p>
                        <p class="c-small-text"><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star-o job-panel__rate fa-lg" aria-hidden="true"></i>(3)</p>  
                     </div>
+                    -->
                 </div>
             </div><!-- .job-detail-box__sub-col -->
         </div>
     </div>
-   　<div class="container">
-   　    <div class="row">
-   　        <div class="col-md-6">
-   　            <div class="job-detail-box__item-question text-center">
-                    <h4 class="c-only-bold">気になることを質問してみる</h4>
+     <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="job-detail-box__item-question text-center">
+                    <h4 class="c-only-bold"><i class="fa fa-comment fa-1x c-fa-circle c-lightcolor-text c-lightcolor-border c-keycolor2-bg" aria-hidden="true"></i> 気になることを質問してみる</h4>
                         <%= form_for [:mypage, @item.user, @message], html: { class: "form-horizontal" } do |f| %>
                           <div class="form-group">
                                 <div class="col-xs-10 col-xs-offset-1">
@@ -83,7 +85,7 @@
                             <div class="form-group">
                                     <div class="col-xs-10 col-xs-offset-1">
                                         <%= button_tag class: "btn btn-danger" do %>
-                                          <i class="fa fa-comments-o fa-fw" aria-hidden="true"></i>メッセージを送る
+                                          <i class="fa fa-comments-o" aria-hidden="true"></i>メッセージを送る
                                         <% end %>
                                     </div>
                             </div>
@@ -93,24 +95,27 @@
             <div class="col-md-6">
                    <% if not current_user.nil? %>
                    <div class="job-detail-box__item-buy row text-center">
-                    <h4 class="c-only-bold">チケットを予約する</h4>
+                       <h4 class="c-only-bold"><i class="fa fa-ticket fa-1x c-fa-circle c-lightcolor-text c-lightcolor-border c-keycolor3-bg" aria-hidden="true"></i> チケットを予約する</h4>
                         <%= form_for @appointment, html: { class: "form-horizontal" } do |f| %>
                             <div class="form-group text-left">
-                                <label class="control-label col-xs-3 col-xs-offset-1">日時</label>
-                                <div class="col-xs-7">
-                                    <%= f.text_field :datetime, id: "datepicker", class: "form-control" %>
+                                <label class="control-label col-xs-2 col-xs-offset-1">日時</label>
+                                <div class="col-xs-8">
+                                    <!--<%= f.text_field :datetime, id: "datepicker", class: "form-control" %>-->
+                                    <!-- 下が新しいバージョン -->
+                                    <%= f.text_field :datetime, class: "reserve-date form-control" %>
+                                    <!-- <input type="text" name="date" class="reserve-date form-control">-->
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-3 col-xs-offset-1">場所</label>
-                                <div class="col-xs-7">
+                                <label class="control-label col-xs-2 col-xs-offset-1">場所</label>
+                                <div class="col-xs-8">
                                     <%= f.text_field :place, class: "form-control", placeholder: "東京都千代田区" %>
                                     <p class="c-small-text text-left">※ ご登録住所と、施術希望場所が異なる場合は、直接ご入力ください。</p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-3 col-xs-offset-1">その他</label>
-                                <div class="col-xs-7">
+                                <label class="control-label col-xs-2 col-xs-offset-1">その他</label>
+                                <div class="col-xs-8">
                                     <%= f.text_area :memo, class: "form-control", rows: 4 %>
                                 </div>
                             </div>
@@ -124,20 +129,21 @@
                             </div>
                         <% end %>
                     </div><!-- .job-detail-box__item-buy -->  
-   　              </div>
-   　              
-   　              
+                 </div>
+                 
+                 
                    <% else %>
                    <!-- ログインしていないユーザー用 -->
-                       <div class="job-detail-box__item-buy text-center">
-                        <h4 class="c-only-bold">新規登録して予約する</h4>
+                <div class="job-detail-box__item-buy text-center">
+                    <h4 class="c-only-bold"><i class="fa fa-ticket fa-1x c-fa-circle c-lightcolor-text c-lightcolor-border c-keycolor3-bg" aria-hidden="true"></i> 新規登録して予約する（無料）</h4>
                           <%= link_to "無料ユーザー登録はこちら", new_user_registration_path, { class: "btn btn-warning btn-block modal-open c-only-bold" } %>
                         </div><!-- .job-detail-box__item-buy -->  
-   　              </div><!-- TODO: 追加した。どこかタグの対応がおかしい -->
                   <% end %>
-   　   </div> 
-   　 </div>
-   　           
+            </div>
+     </div> 
+   </div>
+        
+              
   </div><!-- .ticket-detail-box -->
 
 <section class="section c-bg-dark c-border-r c-border-l">
