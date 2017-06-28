@@ -38,15 +38,17 @@
                           <% end %>
                         </li>
                     </ul>
-                     <div class="col-md-3 job-panel__list">
+                     <div class="col-md-6 job-panel__list">
                        <p class="text-center c-small-text">購入</p>
                        <p class="text-center c-big-text"><%= item.appointments.size %></p>  
                      </div>
+                     <!--
                      <div class="col-md-5 job-panel__list">
                        <p class="text-center c-small-text">評価</p>
                        <p class="text-center c-small-text"><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star-o job-panel__rate fa-lg" aria-hidden="true"></i>(3)</p>  
                      </div>
-                     <div class="col-md-4 job-panel__list">
+                     -->
+                     <div class="col-md-6 job-panel__list">
                        <p class="text-center c-small-text">料金</p>
                        <p class="text-center c-big-text"><span class="c-small-text">￥</span><%= number_with_delimiter(item.price) %><span class="c-small-text">-</span></p>  
                      </div>
