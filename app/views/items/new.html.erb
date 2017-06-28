@@ -94,7 +94,7 @@ $(function() {
 </script>
 <% end %>
 
-<h3 class="text-center section__title-sub2">チケット登録</h3>
+<h3 class="text-center section__title-sub2">チケットを出品</h3>
 
 <div class="alert alert-dismissible alert-warning">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -113,64 +113,62 @@ $(function() {
 <% end %>
 
 <%= form_for(@item, html: { class: "form-horizontal" }) do |f| %>
-  <div class="form-group">
-    <%= f.label :services, class: "col-md-2 control-label" %>
-    <div class="col-md-6">
-      <div class="form-inline">
+  <div class="form-group text-left">
+    <%= f.label :services, class: "control-label col-xs-3 col-xs-offset-1" %>
+    <div class="form-inline col-xs-7">
       <%= f.collection_check_boxes(:service_ids, Service.all, :id, :name) do |b| %>
-         <div class="checkbox">
-           <%= b.label { b.check_box + " " + b.text } %>
-         </div>
+        <div class="checkbox">
+          <%= b.label(class: "checkbox-inline") { b.check_box + " " + b.text } %>&nbsp;
+        </div>
       <% end %>
-       </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :title, class: "col-md-2 control-label" %>
-    <div class="col-md-6">
+  <div class="form-group text-left">
+    <%= f.label :title, class: "control-label col-xs-3 col-xs-offset-1" %>
+    <div class="col-xs-5">
       <%= f.text_field :title, class: "form-control" %>
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :detail, class: "col-md-2 control-label" %>
-    <div class="col-md-6">
+  <div class="form-group text-left">
+    <%= f.label :detail, class: "control-label col-xs-3 col-xs-offset-1" %>
+    <div class="col-xs-5">
       <%= f.text_area :detail, class: "form-control" %>
     </div>
   </div>
 
-  <div class="form-group item_available_japan_places">
-    <%= f.label :item_available_japan_places, class: "col-md-2 control-label" %>
-    <div class="col-md-8">
+  <div class="form-group text-left item_available_japan_places">
+    <%= f.label :item_available_japan_places, class: "control-label col-xs-3 col-xs-offset-1" %>
+    <div class="col-xs-5">
       <div class="item_available_japan_places">
         <%= f.fields_for :item_available_japan_places do |form| %>
           <%= render "item_available_japan_place_fields", f: form %>
         <% end %>
       </div>
       <div class="links">
-        <%= link_to_add_association "追加", f, :item_available_japan_places %>
+        <%= link_to_add_association "追加", f, :item_available_japan_places, { class: "btn btn-default btn-xs" } %>
       </div>
     </div>
   </div>
 
-  <div class="form-group item_available_datetimes">
-    <%= f.label :item_available_datetimes, class: "col-md-2 control-label" %>
-    <div class="col-md-8">
+  <div class="form-group text-left item_available_datetimes">
+    <%= f.label :item_available_datetimes, class: "control-label col-xs-3 col-xs-offset-1" %>
+    <div class="col-xs-8">
       <div class="item_available_datetimes">
         <%= f.fields_for :item_available_datetimes do |form| %>
           <%= render "item_available_datetime_fields", f: form %>
         <% end %>
       </div>
       <div class="links">
-        <%= link_to_add_association "追加", f, :item_available_datetimes %>
+        <%= link_to_add_association "追加", f, :item_available_datetimes, { class: "btn btn-default btn-xs" } %>
       </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :execution_time, class: "col-md-2 control-label" %>
-    <div class="col-md-2">
+  <div class="form-group text-left">
+    <%= f.label :execution_time, class: "control-label col-xs-3 col-xs-offset-1" %>
+    <div class="col-xs-2">
       <%= f.select :execution_time,
           { "30 分" => 30, "1 時間" => 60, "1 時間半" => 90, "2 時間" => 120, "2 時間半" => 150, "3 時間" => 180 },
           { include_blank: true },
@@ -178,16 +176,16 @@ $(function() {
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :price, class: "col-md-2 control-label" %>
-    <div class="col-md-2">
+  <div class="form-group text-left">
+    <%= f.label :price, class: "control-label col-xs-3 col-xs-offset-1" %>
+    <div class="col-xs-2">
       <%= f.number_field :price, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group">
-    <div class="col-md-6 col-md-offset-2">
-      <%= f.submit "登録", class: "btn btn-large btn-primary" %>
+    <div class="col-xs-12 text-center">
+      <%= f.submit "登録", class: "btn btn-danger" %>
     </div>
   </div>
 <% end %>

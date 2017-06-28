@@ -13,9 +13,9 @@
 </div>
 
 <section>
-       <h3 class="text-center section__title-sub2">タイトル</h3>
+       <h3 class="text-center section__title-sub2">会員情報</h3>
           <dl class="c-table">
-              <dt>ユーザー名</dt>
+              <dt>アカウント名</dt>
               <dd>
                 <% if current_user.account_name.nil? %>
                   (未登録)
@@ -29,6 +29,10 @@
                <dd><%= current_user.email %></dd>
            </dl>
            <dl class="c-table">
+               <dt>氏名</dt>
+               <dd><%= current_user.last_name %> <%= current_user.first_name %></dd>
+           </dl>
+           <dl class="c-table">
                <dt>性別</dt>
                <dd>
                  <% if current_user.sex == 1 %>
@@ -39,6 +43,26 @@
                    (未登録)
                  <% end %>
                </dd>
+           </dl>
+           <dl class="c-table">
+               <dt>生年月日</dt>
+               <dd><%= current_user.birthday %></dd>
+           </dl>
+           <dl class="c-table">
+               <dt>住所</dt>
+               <dd>
+                 <%= current_user.japan_user.japan_prefecture.name %><br>
+                 <%= current_user.address2 %><br>
+                 <%= current_user.address3 %>
+               </dd>
+           </dl>
+           <dl class="c-table">
+               <dt>電話番号</dt>
+               <dd><%= current_user.phone %></dd>
+           </dl>
+           <dl class="c-table">
+               <dt>電話番号 (携帯)</dt>
+               <dd><%= current_user.phone_mobile %></dd>
            </dl>
 </section>
 <section>

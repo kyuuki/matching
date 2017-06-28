@@ -15,15 +15,15 @@
 
 <div class="alert alert-dismissible alert-warning">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <p>TODO: 入力フォームのデザイン未適用。</p>
   <p>TODO: 生年月日の入力方法要検討。</p>
+  <p>TODO: プロフィール画像のファイル選択部分をきれいにしたい。</p>
 </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form-group text-left">
-    <%= f.label :email, class: "control-label col-xs-3" %>
+    <%= f.label :email, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-7">
       <%= f.email_field :email, autofocus: true, class: "form-control" %>
     </div>
@@ -34,14 +34,14 @@
   <% end %>
 
   <div class="form-group text-left">
-    <%= f.label :password, class: "control-label col-xs-3" %>
+    <%= f.label :password, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-5">
       <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group text-left">
-    <%= f.label :password_confirmation, class: "control-label col-xs-3"  %>
+    <%= f.label :password_confirmation, class: "control-label col-xs-3 col-xs-offset-1"  %>
     <div class="col-xs-5">
       <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
       <% if @minimum_password_length %>
@@ -52,14 +52,14 @@
   </div>
 
   <div class="form-group text-left">
-    <%= f.label :account_name, class: "control-label col-xs-3" %>
+    <%= f.label :account_name, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-5">
       <%= f.text_field :account_name, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group text-left">
-    <%= f.label :last_name, class: "control-label col-xs-3" %>
+    <%= f.label :last_name, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-3">
       <%= f.text_field :last_name, class: "form-control" %>
     </div>
@@ -67,7 +67,7 @@
 
   <%= f.fields_for :japan_user do |japan_user_form| %>
   <div class="form-group text-left">
-    <%= japan_user_form.label :last_name_kana, class: "control-label col-xs-3" %>
+    <%= japan_user_form.label :last_name_kana, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-3">
       <%= japan_user_form.text_field :last_name_kana, class: "form-control" %>
     </div>
@@ -75,7 +75,7 @@
   <% end %>
 
   <div class="form-group text-left">
-    <%= f.label :first_name, class: "control-label col-xs-3" %>
+    <%= f.label :first_name, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-3">
       <%= f.text_field :first_name, class: "form-control" %>
     </div>
@@ -83,7 +83,7 @@
 
   <%= f.fields_for :japan_user do |japan_user_form| %>
   <div class="form-group text-left">
-    <%= japan_user_form.label :first_name_kana, class: "control-label col-xs-3" %>
+    <%= japan_user_form.label :first_name_kana, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-3">
       <%= japan_user_form.text_field :first_name_kana, class: "form-control" %>
     </div>
@@ -91,7 +91,7 @@
   <% end %>
 
   <div class="form-group text-left">
-    <%= f.label :sex, class: "control-label col-xs-3" %>
+    <%= f.label :sex, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-3">
       <div class="radio-inline">
         <%= f.radio_button :sex, 1 %> <label for="user_sex_1">男性</label>
@@ -103,7 +103,7 @@
   </div>
 
   <div class="form-group text-left">
-    <%= f.label :birthday, class: "control-label col-xs-3" %>
+    <%= f.label :birthday, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-3">
       <%= f.text_field :birthday, class: "form-control" %>
     </div>
@@ -111,7 +111,7 @@
 
   <%= f.fields_for :japan_user do |japan_user_form| %>
   <div class="form-group text-left">
-    <%= japan_user_form.label :japan_prefecture, class: "control-label col-xs-3" %>
+    <%= japan_user_form.label :japan_prefecture, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-3">
       <%= japan_user_form.collection_select :japan_prefecture_id, JapanPrefecture.all, :id, :name, {}, { class: "form-control" } %>
     </div>
@@ -119,42 +119,42 @@
   <% end %>
 
   <div class="form-group text-left">
-    <%= f.label :address2, class: "control-label col-xs-3" %>
+    <%= f.label :address2, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-7">
       <%= f.text_field :address2, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group text-left">
-    <%= f.label :address3, class: "control-label col-xs-3" %>
+    <%= f.label :address3, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-7">
       <%= f.text_field :address3, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group text-left">
-    <%= f.label :phone, class: "control-label col-xs-3" %>
+    <%= f.label :phone, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-5">
       <%= f.text_field :phone, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group text-left">
-    <%= f.label :phone_mobile, class: "control-label col-xs-3" %>
+    <%= f.label :phone_mobile, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-5">
       <%= f.text_field :phone_mobile, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group text-left">
-    <%= f.label :profile, class: "control-label col-xs-3" %>
+    <%= f.label :profile, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-7">
       <%= f.text_area :profile, class: "form-control", rows: 5 %>
     </div>
   </div>
 
   <div class="form-group text-left">
-    <%= f.label :profile_image, class: "control-label col-xs-3" %>
+    <%= f.label :profile_image, class: "control-label col-xs-3 col-xs-offset-1" %>
     <div class="col-xs-7">
       <%= f.file_field :profile_image %>
     </div>
