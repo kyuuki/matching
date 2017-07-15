@@ -76,6 +76,7 @@
             <div class="col-md-6">
                 <div class="job-detail-box__item-question text-center">
                     <h4 class="c-only-bold"><i class="fa fa-comment fa-1x c-fa-circle c-lightcolor-text c-lightcolor-border c-keycolor2-bg" aria-hidden="true"></i> 気になることを質問してみる</h4>
+                    <!--
                         <%= form_for [:mypage, @item.user, @message], html: { class: "form-horizontal" } do |f| %>
                           <div class="form-group">
                                 <div class="col-xs-10 col-xs-offset-1">
@@ -90,6 +91,18 @@
                                     </div>
                             </div>
                         <% end %>
+                    -->
+                   <% if not current_user.nil? %>
+                            <div class="form-group">
+                                    <div class="col-xs-10 col-xs-offset-1">
+                                        <%= mail_to @item.user.email, class: "btn btn-danger" do %>
+                                          <i class="fa fa-comments-o" aria-hidden="true"></i>メールを送る
+                                        <% end %>
+                                    </div>
+                            </div>
+                  <% else %>
+                          <%= link_to "無料ユーザー登録はこちら", new_user_registration_path, { class: "btn btn-warning modal-open c-only-bold" } %>
+                  <% end %>
                  </div><!-- .job-detail-box__item-question -->  
            </div>
             <div class="col-md-6">
@@ -123,7 +136,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <%= button_tag appointments_path, method: :post, class: "btn btn-danger" do %>
-                                      <i class="fa fa-comments-o fa-fw" aria-hidden="true"></i>メッセージを送る
+                                      <i class="fa fa-comments-o fa-fw" aria-hidden="true"></i>予約する
                                     <% end %>
                                 </div>
                             </div>
@@ -136,7 +149,7 @@
                    <!-- ログインしていないユーザー用 -->
                 <div class="job-detail-box__item-buy text-center">
                     <h4 class="c-only-bold"><i class="fa fa-ticket fa-1x c-fa-circle c-lightcolor-text c-lightcolor-border c-keycolor3-bg" aria-hidden="true"></i> 新規登録して予約する（無料）</h4>
-                          <%= link_to "無料ユーザー登録はこちら", new_user_registration_path, { class: "btn btn-warning btn-block modal-open c-only-bold" } %>
+                          <%= link_to "無料ユーザー登録はこちら", new_user_registration_path, { class: "btn btn-warning modal-open c-only-bold" } %>
                         </div><!-- .job-detail-box__item-buy -->  
                   <% end %>
             </div>
