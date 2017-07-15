@@ -28,7 +28,7 @@
                     <ul class="job-panel__timePlace">
                         <li>
                           <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>
-                          <%= item.japan_cities.map {|c| c.japan_prefecture.name }.join(", ") %>
+                          <%= item.japan_cities.map {|c| c.japan_prefecture.name }.uniq.join(", ") %>
                         </li>
                         <li>
                           <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>
