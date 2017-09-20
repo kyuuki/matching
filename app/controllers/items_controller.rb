@@ -56,10 +56,19 @@ class ItemsController < ApplicationController
     @item.item_available_datetimes.build(from: from, to: to)
     #@item.item_available_datetime_forms.build  # 表示上は日付と時刻のフォームを別にしたい
 
+    unless current_user.can_sell_item?
+     flash.now[:notice] = "チケットを出品するにはプロフィールの登録が必要です。"  # TODO: 多言語
+    end
+
     render layout: "mypage"
   end
 
   def create
+    unless current_user.can_sell_item?
+      redirect_to edit_user_registration_path(current_user), notice: "チケットを出品するにはプロフィールの登録が必要です。"  # TODO: 多言語
+      return
+    end
+
     @item = Item.new(item_params)
     @item.user = current_user
 

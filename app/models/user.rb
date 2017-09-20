@@ -70,12 +70,13 @@ class User < ActiveRecord::Base
     return false if japan_user.japan_prefecture.nil?
     #return false if address1.nil?
     return false if address2.nil?
-    return false if address3.nil?
+    #return false if address3.nil?
     return false if phone.nil? and phone_mobile.nil?
     return true
   end
 
   def can_sell_item?
-    false
+    return false unless can_buy_item?
+    return true
   end
 end
