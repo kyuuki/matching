@@ -51,6 +51,14 @@ class User < ActiveRecord::Base
     result
   end
 
+  def profile_image_url
+    if profile_image.url.nil?
+      "prof_noimg.jpg"
+    else
+      profile_image.url
+    end
+  end
+
   def can_buy_item?
     return false if account_name.nil?
     return false if first_name.nil?

@@ -50,7 +50,7 @@
          <div class="job-detail-box__sub-col col-md-4">
                 <dl class="job-detail-box__user-info text-center">
                        <dt>
-                          <%= image_tag @item.user.profile_image.url, class: "profile-img c-w100", size: "216x216", alt: "プロフィール写真" %>
+                          <%= image_tag @item.user.profile_image_url, class: "profile-img c-w100", size: "216x216", alt: "プロフィール写真" %>
                         </dt>
                         <dd><p class="job-detail-box__user-name c-only-bold"><%= @item.user.account_name.nil? ? "(アカウント名未登録)" : @item.user.account_name %></p></dd>
                     <dd><p class="job-detail-box__user-profile"><%= @item.user.profile.nil? ? "(プロフィール未登録)" : @item.user.profile %></p></dd>
