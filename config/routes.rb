@@ -14,7 +14,11 @@ Rails.application.routes.draw do
       resources :messages, only: [ :index, :create ]
     end
     resources :items, only: [ :index ], controller: 'mypage/items'  # http://docs.komagata.org/4905
-    resources :appointments, only: [ :index ], controller: 'mypage/appointments'
+    resources :appointments, only: [ :index ], controller: 'mypage/appointments' do
+      collection do
+        get 'reserved'
+      end
+    end
   end
 
   devise_for :users, controllers: {
