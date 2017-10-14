@@ -1,7 +1,13 @@
 <% user = item.user %>
 <div class="mypage__main-col__message-box row">
   <div class="col-md-2">
-    <p class="message_book-status c-only-bold">出品中</p>
+    <% if item.available == true %>
+      <p class="message_book-status c-only-bold">出品中</p>
+      <%= link_to '停止', deactivate_mypage_item_path(item), method: :put %>
+    <% else %>
+      <p class="message_book-status c-only-bold">停止中</p>
+      <%= link_to '再出品', activate_mypage_item_path(item), method: :put %>
+    <% end %>
   </div>
   <div class="main-col col-md-6">
     <%= link_to item, class: "c-link-underline" do %>
