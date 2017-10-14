@@ -1,0 +1,38 @@
+<% appointment = reserved %>
+<% item = appointment.item %>
+<% user = appointment.user %>
+<div class="mypage__main-col__message-box row">
+  <div class="col-md-2 text-center">
+     <p class="message_date"><%= l appointment.datetime %></p>
+     <% if appointment.place.blank? %>
+       <p class="message_date"><%= user.japan_user.japan_prefecture.name %> <%= user.address2 %> <%= user.address3 %></p>
+     <% else %>
+       <p class="message_date"><%= appointment.place %></p>
+     <% end %>
+  </div>
+  <div class="main-col col-md-4">
+     <div class="col-xs-6 text-center">
+       <%= image_tag user.profile_image_url, class: "talk-avatar c-w100", alt: "" %>
+     </div>
+     <div class="col-xs-6 text-left">
+       <p class="message_name c-only-bold"><%= user.last_name %> <%= user.first_name %></p>
+     </div>
+  </div>
+  <div class="main-col col-md-6">
+    <%= link_to item, class: "c-link-underline" do %>
+      <p class="message_title c-only-bold"><%= appointment.item.title %></p>
+    <% end %>
+    <p class="message_content">
+      <% unless appointment.memo.blank? %>
+        <%= appointment.memo %>
+      <% end %>
+    </p>
+    <p class="message_content">
+      <%= mail_to user.email, class: "btn btn-danger" do %>
+        <i class="fa fa-comments-o" aria-hidden="true"></i>メールを送る
+      <% end %>
+    </p>
+  </div>
+</div>
+<hr class="c-hr">
+
