@@ -37,11 +37,13 @@
             <%= link_to "ログイン", new_user_session_path %>
           </li>
           <% else %>
+          <!--
           <li class="navbar-nav--message">
             <%= link_to mypage_path do %>
               <i class="fa fa-comments-o fa-fw" aria-hidden="true"></i>メッセージ
             <% end %>
           </li>
+          -->
           <li class="navbar-nav--mypage">
             <%= link_to mypage_path do %>
               <i class="fa fa-user fa-fw" aria-hidden="true"></i>マイページ

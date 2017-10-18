@@ -1,23 +1,32 @@
 <% user = item.user %>
 <div class="mypage__main-col__message-box row">
-  <div class="main-col col-md-4">
-     <div class="col-xs-6 text-center">
-       <%= image_tag user.profile_image.url, class: "talk-avatar c-w100", alt: "" %>
-     </div>
-     <div class="col-xs-6 text-left">
-       <p class="message_date c-small-text"><%= l item.created_at %></p>
-       <p class="message_name c-only-bold"><%= user.last_name %> <%= user.first_name %></p>
-       <p class="message_area c-small-text"><%= user.japan_user.japan_prefecture.name %></p>
-     </div>
+  <div class="col-md-2">
+    <% if item.available == true %>
+      <p class="message_book-status c-only-bold">出品中</p>
+      <%= link_to '停止', deactivate_mypage_item_path(item), method: :put %>
+    <% else %>
+      <p class="message_book-status c-only-bold">停止中</p>
+      <%= link_to '再出品', activate_mypage_item_path(item), method: :put %>
+    <% end %>
   </div>
   <div class="main-col col-md-6">
     <%= link_to item, class: "c-link-underline" do %>
       <p class="message_title c-only-bold"><%= item.title %></p>
-      <p class="message_content"><%= item.detail %></p>
     <% end %>
+    <p class="message_content"><%= item.detail %></p>
   </div>
-  <div class="col-md-2">
-     <p class="message_book-status c-only-bold">出品中</p>
+  <div class="main-col col-md-4">
+    <p class="message_date c-small-text">
+      <% item.item_available_datetimes.each do |datetime| %>
+        <%= l datetime.from, format: :short %> ～ <%= l datetime.to, format: :short %><br>
+      <% end %>
+    </p>
+    <p class="message_date">
+      <%= item.execution_time %>分
+    </p>
+    <p class="message_date">
+      <%= item.price %>円
+    </p>
   </div>
 </div>
 <hr class="c-hr">

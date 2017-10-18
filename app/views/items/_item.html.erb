@@ -5,7 +5,7 @@
                    <dl>
                        <dt>
                          <%= link_to item do %>
-                           <%= image_tag item.user.profile_image.url, class: "job-panel__profile-img", size: "80x80", alt: "プロフィール写真" %>
+                           <%= image_tag item.user.profile_image_url, class: "job-panel__profile-img", size: "80x80", alt: "プロフィール写真" %>
                          <% end %>
                        </dt>
                        <dd>
@@ -28,7 +28,7 @@
                     <ul class="job-panel__timePlace">
                         <li>
                           <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>
-                          <%= item.japan_cities.map {|c| c.japan_prefecture.name }.join(", ") %>
+                          <%= item.japan_cities.map {|c| c.japan_prefecture.name }.uniq.join(", ") %>
                         </li>
                         <li>
                           <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>
@@ -38,28 +38,31 @@
                           <% end %>
                         </li>
                     </ul>
-                     <div class="col-md-3 job-panel__list">
+                     <div class="col-md-6 job-panel__list">
                        <p class="text-center c-small-text">購入</p>
                        <p class="text-center c-big-text"><%= item.appointments.size %></p>  
                      </div>
+                     <!--
                      <div class="col-md-5 job-panel__list">
                        <p class="text-center c-small-text">評価</p>
                        <p class="text-center c-small-text"><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star job-panel__rate fa-lg" aria-hidden="true"></i><i class="fa fa-star-o job-panel__rate fa-lg" aria-hidden="true"></i>(3)</p>  
                      </div>
-                     <div class="col-md-4 job-panel__list">
+                     -->
+                     <div class="col-md-6 job-panel__list">
                        <p class="text-center c-small-text">料金</p>
                        <p class="text-center c-big-text"><span class="c-small-text">￥</span><%= number_with_delimiter(item.price) %><span class="c-small-text">-</span></p>  
                      </div>
               </div> 
            <div class="panel-footer text-center">
-               <% if current_user.try!(:id) == item.user.id %>
-                 <%= link_to "#", class: "btn btn-danger disabled" do %>
-                   <i class="fa fa-comments-o fa-fw" aria-hidden="true"></i>メッセージを送る
+               <% if not current_user.nil? and current_user.try!(:id) != item.user.id %>
+                 <%= mail_to item.user.email, class: "btn btn-danger" do %>
+                   <i class="fa fa-comments-o fa-fw" aria-hidden="true"></i>メールを送る
                  <% end %>
-               <% else %>
+                 <!--
                  <%= link_to mypage_user_messages_path(item.user), class: "btn btn-danger" do %>
                    <i class="fa fa-comments-o fa-fw" aria-hidden="true"></i>メッセージを送る
                  <% end %>
+                 -->
                <% end %>
            </div>
        </div>

@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
 
   def index
-    @items = Item.all.order(id: :desc)
+    @items = Item.valid(Time.zone.now()).all.order(id: :desc)
   end
 
   def list
@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     param_japan_prefectures = params["japan_prefectures"]
 
     # TODO: 検索条件のパラメータをどうするか
-    query = Item.includes(:services, :item_available_datetimes, :japan_cities)
+    query = Item.includes(:services, :item_available_datetimes, :japan_cities).valid(Time.zone.now())
     if not (param_services.nil? or param_services.size == 0)
       query = query.where(services: {id: param_services})
     end
@@ -56,10 +56,19 @@ class ItemsController < ApplicationController
     @item.item_available_datetimes.build(from: from, to: to)
     #@item.item_available_datetime_forms.build  # 表示上は日付と時刻のフォームを別にしたい
 
+    unless current_user.can_sell_item?
+     flash.now[:notice] = "チケットを出品するにはプロフィールの登録が必要です。"  # TODO: 多言語
+    end
+
     render layout: "mypage"
   end
 
   def create
+    unless current_user.can_sell_item?
+      redirect_to edit_user_registration_path(current_user), notice: "チケットを出品するにはプロフィールの登録が必要です。"  # TODO: 多言語
+      return
+    end
+
     @item = Item.new(item_params)
     @item.user = current_user
 

@@ -17,4 +17,7 @@ class Item < ActiveRecord::Base
   validates :services, length: { minimum: 1 }
   validates :item_available_japan_places, length: { minimum: 1, maximum: 5 }
   validates :item_available_datetimes, length: { minimum: 1, maximum: 5 }
+
+  scope :posted_by, ->(user) { where(user: user) }
+  scope :valid, ->(now) { joins(:item_available_datetimes).merge(ItemAvailableDatetime.available_after(now)).where(available: true) }
 end

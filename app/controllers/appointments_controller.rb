@@ -2,6 +2,11 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    unless current_user.can_buy_item?
+      redirect_to edit_user_registration_path(current_user), notice: "チケットを予約するにはプロフィールの登録が必要です。"  # TODO: 多言語
+      return
+    end
+
     appointment = Appointment.new(appointment_params)
     appointment.user = current_user
 

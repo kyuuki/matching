@@ -50,4 +50,33 @@ class User < ActiveRecord::Base
     clean_up_passwords
     result
   end
+
+  def profile_image_url
+    if profile_image.url.nil?
+      "prof_noimg.jpg"
+    else
+      profile_image.url
+    end
+  end
+
+  def can_buy_item?
+    return false if account_name.nil?
+    return false if first_name.nil?
+    return false if japan_user.first_name_kana.nil?
+    return false if last_name.nil?
+    return false if japan_user.last_name_kana.nil?
+    return false if sex.nil?
+    return false if birthday.nil?
+    return false if japan_user.japan_prefecture.nil?
+    #return false if address1.nil?
+    return false if address2.nil?
+    #return false if address3.nil?
+    return false if phone.nil? and phone_mobile.nil?
+    return true
+  end
+
+  def can_sell_item?
+    return false unless can_buy_item?
+    return true
+  end
 end

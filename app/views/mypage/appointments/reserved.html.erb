@@ -1,0 +1,14 @@
+<% content_for :title do %>
+購入されたチケット
+<% end %>
+
+<% content_for :js do %>
+<script src="/js/mypage.js" type="text/javascript"></script>
+<% end %>
+
+<h3 class="text-center section__title-sub2">購入されたチケット</h3>
+
+<hr class="c-hr">
+
+<%= render partial: "reserved", collection: @appointments %>
+

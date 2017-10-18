@@ -9,7 +9,6 @@
 <div class="alert alert-dismissible alert-warning">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <p>TODO: メニュー構成要検討。</p>
-  <p>TODO: マイページトップに表示するコンテンツをどうするか？</p>
 </div>
 
 <section>
@@ -30,7 +29,13 @@
            </dl>
            <dl class="c-table">
                <dt>氏名</dt>
-               <dd><%= current_user.last_name %> <%= current_user.first_name %></dd>
+               <dd>
+                 <% if current_user.last_name.blank? && current_user.first_name.blank? %>
+                   (未登録)
+                 <% else %>
+                   <%= current_user.last_name %> <%= current_user.first_name %>
+                 <% end %>
+               </dd>
            </dl>
            <dl class="c-table">
                <dt>性別</dt>
@@ -46,25 +51,47 @@
            </dl>
            <dl class="c-table">
                <dt>生年月日</dt>
-               <dd><%= current_user.birthday %></dd>
+               <dd>
+                 <% if current_user.birthday.nil? %>
+                   (未登録)
+                 <% else %>
+                   <%= current_user.birthday %>
+                 <% end %>
+               </dd>
            </dl>
            <dl class="c-table">
                <dt>住所</dt>
                <dd>
-                 <%= current_user.japan_user.japan_prefecture.name %><br>
-                 <%= current_user.address2 %><br>
-                 <%= current_user.address3 %>
+                 <% if current_user.japan_user.nil? %>
+                  (未登録)
+                 <% else %>
+                   <%= current_user.japan_user.japan_prefecture.name %><br>
+                   <%= current_user.address2 %><br>
+                   <%= current_user.address3 %>
+                 <% end %>
                </dd>
            </dl>
            <dl class="c-table">
                <dt>電話番号</dt>
-               <dd><%= current_user.phone %></dd>
+               <dd>
+                 <% if current_user.phone.nil? %>
+                  (未登録)
+                 <% else %>
+                   <%= current_user.phone %>
+                 <% end %>
+               </dd>
            </dl>
            <dl class="c-table">
                <dt>電話番号 (携帯)</dt>
-               <dd><%= current_user.phone_mobile %></dd>
+               <dd>
+                 <% if current_user.phone_mobile.nil? %>
+                  (未登録)
+                 <% else %>
+                   <%= current_user.phone_mobile %>
+                 <% end %>
            </dl>
 </section>
+<!--
 <section>
     <h3 class="text-center section__title-sub2">タイトル</h3>
       <form class="form-horizontal">
@@ -112,4 +139,5 @@
         </div>
     </form>
 </section>
+-->
 
