@@ -6,12 +6,6 @@
   <div class="container">
     <h3 class="text-center section__title-sub2">ユーザー登録</h3>
 
-    <div class="alert alert-dismissible alert-warning">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <p>TODO: デザイン未適用。ダイアログ表示でのログインは時間がかかりそう。</p>
-      <p>TODO: Twitter, Facebook ログイン未実装。</p>
-    </div>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
              html: { class: "form-horizontal" }) do |f| %>
   <%= devise_error_messages! %>

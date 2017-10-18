@@ -1,60 +1,47 @@
 <footer class="footer">
-    <div class="container">
-        <div class="clearfix"></div>
-                <div class="footer__footer-menu row">
-                    <div class="col-md-3">
-                        <ul class="list-group">
-                            <li class="c-only-bold first">
-                                <%= link_to "トップ", root_path %>
-                            </li>
-                            <li>
-                                <%= link_to "うちサロンとは？", about_path %>
-                            </li>
-                            <li>
-                                <%= link_to "チケット一覧", items_path %>
-                            </li>
-                            <li>
-                                <%= link_to "利用規約", terms_path %>
-                            </li>
-                        </ul>
-                        <!-- /nav -->
-                    </div>
-                     <div class="col-md-3">
-                        <ul class="list-group">
-                            <li class="c-only-bold first">
-                                <%= link_to "マイページ", mypage_path %>
-                            </li>
-                            <li>
-                                <%= link_to "マイページ項目", mypage_path %>
-                            </li>
-                        </ul>
-                        <!-- /nav -->
-                    </div>
-                    <div class="col-md-3">
-                        <ul class="list-group">
-                            <li class="c-only-bold first">
-                                <a href="">項目</a>
-                            </li>
-                            <li>
-                                <a href="">項目</a>
-                            </li>
-                        </ul>
-                        <!-- /nav -->
-                    </div>
-                    <div class="col-md-3">
-                        <ul class="list-group">
-                            <li class="c-only-bold first">
-                                <a href="">項目</a>
-                            </li>
-                            <li>
-                                <a href="">項目</a>
-                            </li>
-                        </ul>
-                        <!-- /nav -->
-                    </div>
-                </div>
-        <div class="clearfix"></div>
-        <div id="page-top" class="c-page-top">
+  <div class="container">
+    <div class="clearfix"></div>
+    <div class="footer__footer-menu row">
+      <div class="col-md-6">
+        <ul class="list-group">
+          <li class="c-only-bold first">
+            <%= link_to "トップ", root_path %>
+          </li>
+          <li>
+              <%= link_to "うちサロンとは？", about_path %>
+          </li>
+          <li>
+              <%= link_to "チケット一覧", items_path %>
+          </li>
+          <li>
+              <%= link_to "利用規約", terms_path %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-group">
+          <li class="c-only-bold first">
+              <%= link_to "マイページ", mypage_path %>
+          </li>
+          <li>
+              <%= link_to "チケットを出品", new_item_path %>
+          </li>
+          <li>
+              <%= link_to "プロフィールを編集", edit_user_registration_path %>
+          </li>
+          <li>
+              <%= link_to "購入したチケット", mypage_appointments_path %>
+          </li>
+          <li>
+              <%= link_to "出品したチケット", mypage_items_path %>
+          </li>
+          <li>
+              <%= link_to "購入されたチケット", reserved_mypage_appointments_path %>
+          </li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+      <div id="page-top" class="c-page-top">
         <p>
           <a id="move-page-top" class="move-page-top">
             <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
@@ -63,9 +50,10 @@
       </div>
       <div class="container">
         <p class="text-center text-muted footer__copyright">
-          &copy; 2016 Matching All Rights Reserved.
+          &copy; 2017 Matching All Rights Reserved.
         </p>
       </div>
-  </div>
+    </div>
+  </div><!-- ./container -->
 </footer>
 
