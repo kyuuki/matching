@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'about' => 'welcome#about'
   get 'terms' => 'welcome#terms'
 
-  resources :items, only: [ :index, :show, :new, :create ] do
+  resources :items do
     collection do
       get 'list'
     end
