@@ -1,0 +1,27 @@
+<% content_for :title do %>
+ユーザー一覧
+<% end %>
+
+<div class="box">
+  <div class="box-header with-border">
+    <h3 class="box-title">ユーザー一覧</h3>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body">
+    <table class="table table-borderd">
+      <tbody>
+        <tr>
+          <th style="width: 10px">ID</th>
+          <th>メールアドレス</th>
+          <th style="width: 180px">登録日</th>
+        </tr>
+        <%= render @users %>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.box-body -->
+  <div class="box-footer">
+  </div>
+  <!-- box-footer -->
+</div>
+<!-- /.box -->

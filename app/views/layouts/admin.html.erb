@@ -43,7 +43,11 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">うちサロン</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>ユーザー一覧</span></a></li>
+        <li class="active">
+          <%= link_to admin_users_path do %>
+            <i class="fa fa-link"></i> <span>ユーザー一覧</span>
+          <% end %>
+        </li>
         <li><a href="#"><i class="fa fa-link"></i> <span>チケット一覧</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>設定</span>
@@ -63,7 +67,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <section class="content-header">
-        <h3>トップページ</h3>
+        <h3><%= yield(:title) %></h3>
       </section>
       <section class="content container-fluid">
         <%= content_for(:content) ? yield(:content) : yield %>
