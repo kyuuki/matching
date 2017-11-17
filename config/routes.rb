@@ -31,10 +31,22 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: 'omniauth_callbacks'
   }
-  devise_for :admin_users
 
   # API
   resources :japan_cities, only: [ :index ]
+
+  # 管理画面
+  devise_for :admin_users, controllers: {
+    sessions: 'admin_users/sessions'
+  }
+
+  namespace 'admin' do
+    root to: 'welcome#index'
+
+    resources :users
+    resources :items
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

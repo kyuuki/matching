@@ -1,4 +1,8 @@
-<h2>Log in</h2>
+<div class="login-box">
+  <div class="login-logo">
+    <h3>管理画面 (うちサロン)</h3>
+  </div>
+  <div class="login-box-body">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -23,4 +27,8 @@
   </div>
 <% end %>
 
-<%= render "admin_users/shared/links" %>
+<%#= render "admin_users/shared/links" %>
+
+  </div>
+</div><!-- /.login-box -->
+
