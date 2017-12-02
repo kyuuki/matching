@@ -271,6 +271,19 @@ a:hover {
   color: #fe85a5;
 }
 
+@media (max-width: 383px) {
+  #top-movie {
+    height: 360px;
+  }
+  .jumbotron-top {
+    height: 360px;
+  }
+  .jumbotron-top__title {
+    margin: 38px 0 0 0;
+    font-size: 180%;
+  }
+}
+
 .jumbotron {
   width: 100%;
   margin-bottom: 0;
