@@ -1,4 +1,4 @@
-class CreateItemAvailableDatetimes < ActiveRecord::Migration
+class CreateItemAvailableDatetimes < ActiveRecord::Migration[4.2]
   def change
     create_table :item_available_datetimes do |t|
       t.references :item, index: true, foreign_key: true

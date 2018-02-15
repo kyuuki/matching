@@ -1,4 +1,4 @@
-class CreateItemAvailableJapanPlaces < ActiveRecord::Migration
+class CreateItemAvailableJapanPlaces < ActiveRecord::Migration[4.2]
   def change
     create_table :item_available_japan_places do |t|
       t.references :item, index: true, foreign_key: true
