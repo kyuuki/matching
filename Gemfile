@@ -82,3 +82,7 @@ end
 
 #gem 'quiet_assets', group: :development
 
+# SEO
+gem 'sitemap_generator'
+gem 'meta-tags'
+

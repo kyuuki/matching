@@ -5,19 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset='utf-8'>
 
-  <meta content="うちサロン,ヘアサロン,ネイルケア,ネイルカラー,ネイルアート,美容,マッチング" name="keywords">
-  <meta content="美容に関する売り買いがかんたんにできる、安心・安全のマッチングサービスです。たった1分で登録が完了するので、明日にはおうちがサロンに早変わりします。" name="description">
+  <% set_meta_tags(
+    site: "がんばる女性に安らぎを マッチングサービス「うちサロン」",
+    title: yield(:title),
+    reverse: true,
+    description: "美容に関する売り買いがかんたんにできる、安心・安全のマッチングサービスです。たった1分で登録が完了するので、明日にはおうちがサロンに早変わりします。",
+    keywords: [ "うちサロン", "ヘアサロン", "ネイルケア", "ネイルカラー", "ネイルアート", "美容", "マッチング" ],
+    canonical: request.original_url,
+    og: {
+      type: "website",
+      title: :title,
+      description: :description,
+      image: "https://uchi.salon/images/about_img1.jpg",
+      url: request.original_url,
+      site_name: :site
+    },
+    twitter: {
+      card: "summary",
+      site: "@uchisalon",
+      image: "https://uchi.salon/images/about_img1.jpg"
+    })
+  %>
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="がんばる女性に安らぎを マッチングサービス「うちサロン」" />
-  <meta property="og:description" content="美容に関する売り買いがかんたんにできる、安心・安全のマッチングサービスです。たった1分で登録が完了するので、明日にはおうちがサロンに早変わりします。" />
-  <meta property="og:image" content="https://uchi.salon/images/about_img1.jpg" />
-  <meta property="og:url" content="https://uchi.salon/" />
-  <meta property="og:site_name" content="うちサロン"/>
-
-  <title>
-    <%= content_for(:title) ? yield(:title) + " | " : "" %>がんばる女性に安らぎを マッチングサービス「うちサロン」
-  </title>
+  <%= display_meta_tags %>
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
   <!--[if lt IE 9]>
