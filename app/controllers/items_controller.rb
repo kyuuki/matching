@@ -3,7 +3,9 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
 
   def index
-    @items = Item.valid(Time.zone.now()).all.order(id: :desc)
+    #@items = Item.valid(Time.zone.now()).all.order(id: :desc)
+    @items = Item.all.order(id: :desc)
+    # しばらく、過去のものも表示する
   end
 
   def list
@@ -15,7 +17,9 @@ class ItemsController < ApplicationController
     param_japan_prefectures = params["japan_prefectures"]
 
     # TODO: 検索条件のパラメータをどうするか
-    query = Item.includes(:services, :item_available_datetimes, :japan_cities).valid(Time.zone.now())
+    #query = Item.includes(:services, :item_available_datetimes, :japan_cities).valid(Time.zone.now())
+    query = Item.includes(:services, :item_available_datetimes, :japan_cities)
+    # しばらく、過去のものも表示する
     if not (param_services.nil? or param_services.size == 0)
       query = query.where(services: {id: param_services})
     end
