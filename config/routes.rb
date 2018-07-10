@@ -9,21 +9,40 @@ Rails.application.routes.draw do
     end
   end
   resources :appointments, only: [ :index, :show, :create ]
-  resource :mypage, only: [ :show ] do
-    resources :users, only: [ :index ] do
-      resources :messages, only: [ :index, :create ]
-    end
-    # http://docs.komagata.org/4905
-    resources :items, only: [ :index ], controller: 'mypage/items' do
+
+  # マイページ
+  namespace 'mypage' do
+    root to: 'mypage#index'
+
+    # TODO: アイテム出品、プロフィール編集を mypage 配下の URL に
+
+    resources :items, only: [ :index ] do
       member do
         put 'activate'
         put 'deactivate'
       end
     end
-    resources :appointments, only: [ :index ], controller: 'mypage/appointments' do
+
+    resources :appointments, only: [ :index ] do
       collection do
         get 'reserved'
       end
+    end
+
+    resources :messages, only: [] do
+      collection do
+        get 'users'
+        get 'users/:id', to: 'messages#index'
+        post 'users/:id', to: 'messages#create'
+      end
+    end
+  end
+
+  #resource :mypage, only: [ :show ] do
+  resource :mypage, only: [] do
+    # メッセージ
+    resources :users, only: [ :index ] do
+      resources :messages, only: [ :index, :create ]
     end
   end
 
