@@ -1,0 +1,49 @@
+<% content_for :title do %>
+メッセージ
+<% end %>
+
+<% content_for :js do %>
+<script src="/js/mypage.js" type="text/javascript"></script>
+<% end %>
+
+<div class="xxx_talk_Box__wrapper">
+  <%= render @messages %>
+</div>
+
+<% if @message.errors.any? %>
+<div class="alert alert-error alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <ul>
+    <% @message.errors.full_messages.each do |msg| %>
+    <li><%= msg %>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_for @message do |f| %>
+<div class="talk-text-box">
+  <div class="talk_Box--right">
+    <div class="talk-user__wrapper">
+      <% if not current_user.profile_image.url.nil? %>
+        <%= image_tag current_user.profile_image.url, class: "talk-avatar c-w100", alt: "" %>
+      <% end %>
+      <p class="talk-user-name text-center"><%= current_user.last_name %> <%= current_user.first_name %></p>
+    </div>
+    <div class="talk_Box__container">
+      <div class="talk_Box__content">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <div class="col-sm-10">
+              <%= f.text_area :body, class: "form-control", size: "50x4" %>
+            </div>
+          </div>
+          <%= f.hidden_field :receiver_id %>
+          <%= f.submit "送信する", class: "btn btn-warning pull-right" %>
+        </form>
+      </div>
+    </div>
+  </div><!-- /.talk_Box -->
+</div>
+<% end %>
+

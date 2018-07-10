@@ -16,6 +16,11 @@ users/registrations  <a href="#menuOne" class="list-group-item" data-toggle="col
   </div>
 -->
 
+  <%= link_to users_mypage_messages_path, class: "list-group-item" do %>
+    <span class="glyphicon glyphicon-envelope"></span> メッセージ
+    <span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span>
+  <% end %>
+
   <%= link_to new_item_path, class: "list-group-item" do %>
     <span class="glyphicon glyphicon-pencil"></span> チケットを出品
     <span class="glyphicon glyphicon-chevron-right pull-right c-maincolor"></span>

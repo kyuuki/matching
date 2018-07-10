@@ -38,6 +38,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # メッセージ
+  resources :messages, only: [ :create ]
+
   #resource :mypage, only: [ :show ] do
   resource :mypage, only: [] do
     # メッセージ

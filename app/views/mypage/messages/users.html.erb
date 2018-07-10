@@ -1,0 +1,40 @@
+<% content_for :title do %>
+メッセージ
+<% end %>
+
+<% content_for :js do %>
+<script src="/js/mypage.js" type="text/javascript"></script>
+<% end %>
+
+<hr class="c-hr">
+
+<% @users.each do |user| %>
+<div class="mypage__main-col__message-box row">
+  <div class="col-md-2 text-center">
+    <% if not user.profile_image.url.nil? %>
+      <%= image_tag user.profile_image.url, class: "talk-avatar c-w100", alt: "" %>
+    <% end %>
+  </div>
+  <div class="col-md-2">
+    <p class="message_date c-small-text">2016/8/8</p>
+    <p class="message_name c-only-bold"><%= user.last_name %> <%= user.first_name %></p>
+    <% if not user.japan_user.nil? %>
+      <p class="message_area c-small-text"><%= user.japan_user.japan_prefecture.name %></p>
+    <% end %>
+  </div>
+  <div class="main-col col-md-8">
+    <%= link_to "/mypage/messages/users/#{user.id}", class: "c-link-underline" do %>
+      <p class="message_title c-only-bold"><%= user.email %></p>
+      <!--<p class="message_content">メッセージ本文メッセージ本文メッセージ本文メッセージ本文メッセージ本文メッセージ本文メッセージ本文メッセージ本文メッセージ本文メッセージ本文...</p>-->
+    <% end %>
+  </div>
+  <!--
+  <div class="col-md-2">
+    <p class="message_book-status c-only-bold">予約済み</p>
+  </div>
+  -->
+</div>
+
+<hr class="c-hr">
+<% end %>
+

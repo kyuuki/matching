@@ -1,0 +1,23 @@
+<p class="c-hr-head"><span class="mypage__main-col__talk-date"><%= l message.created_at %></span></p>
+
+<% if message.sender == current_user %>
+<div class="talk_Box--right">
+<% else %>
+<div class="talk_Box--left">
+<% end %>
+
+  <% user = message.sender %>
+
+  <div class="talk-user__wrapper">
+    <% if not user.profile_image.url.nil? %>
+      <%= image_tag user.profile_image.url, class: "talk-avatar c-w100", alt: "" %>
+    <% end %>
+    <p class="talk-user-name text-center"><%= user.last_name %> <%= user.first_name %></p>
+  </div>
+  <div class="talk_Box__container">
+    <div class="talk_Box__content">
+      <p><%= message.body %></p>
+    </div>
+  </div>
+
+</div><!-- /.talk_Box -->
