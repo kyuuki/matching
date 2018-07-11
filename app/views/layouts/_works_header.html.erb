@@ -1,0 +1,67 @@
+<header>
+  <nav class="navbar navbar-default navbar-fixed-top text-center">
+    <div class="container">
+      <div class="navbar-header">
+        <button href="" class="navbar-toggle collapsed" data-target="#navbar-menu" data-toggle="collapse">
+          <span class="sr-only">メニュー</span>
+          <div class="menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+        <%= link_to works_root_path, class: "navbar-brand" do %>
+          うち<br>
+          仕事
+        <% end %>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="nav navbar-nav">
+          <li class="navbar-nav--emphasis">
+            <%= link_to items_path do %>
+              <b>販売中の</b><br>チケット
+            <% end %>
+          </li>
+          <li class="navbar-nav--normal">
+            <%= link_to about_path do %>
+              お仕事マッチングサービスとは？
+            <% end %>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user.nil? %>
+          <li class="navbar-nav--register">
+            <!-- <a data-target="sign_up" class="modal-open">ユーザー登録</a> -->
+            <%= link_to "ユーザー登録", new_works_user_registration_path %>
+          </li>
+          <li class="navbar-nav--login">
+            <%= link_to "ログイン", new_works_user_session_path %>
+          </li>
+          <% else %>
+          <!--
+          <li class="navbar-nav--message">
+            <%= link_to mypage_root_path do %>
+              <i class="fa fa-comments-o fa-fw" aria-hidden="true"></i>メッセージ
+            <% end %>
+          </li>
+          -->
+          <li class="navbar-nav--mypage">
+            <%= link_to mypage_root_path do %>
+              <i class="fa fa-user fa-fw" aria-hidden="true"></i>マイページ
+            <% end %>
+          </li>
+          <li class="navbar-nav--login">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div><!-- /.container -->
+  </nav>
+
+<!--Modal contents-->
+<!-- TODO -->
+
+</header>
+

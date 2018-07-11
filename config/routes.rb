@@ -51,8 +51,18 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    omniauth_callbacks: 'omniauth_callbacks'
+    # omniauth_callbacks: 'omniauth_callbacks'
   }
+
+  # お仕事マッチング
+  namespace 'works' do
+    root to: 'static#top'
+
+    devise_for :users, controllers: {
+      registrations: 'works/users/registrations',
+      sessions: 'works/users/sessions'
+    }
+  end
 
   # API
   resources :japan_cities, only: [ :index ]

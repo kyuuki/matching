@@ -52,6 +52,8 @@ gem 'pg', group: :production
 gem 'rails_12factor', group: :production
 gem 'puma'
 
+gem 'slim-rails'
+
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'

@@ -1,0 +1,70 @@
+<div class="top-movie-wrapper">
+  <div id="top-movie"></div>
+
+  <div class="jumbotron-top">
+    <div class="jumbotron-top__layer-transparent">
+      <div class="container">
+        <h2 class="jumbotron-top__title">
+          信頼できる人と長期的にお仕事しませんか？<br>
+          手数料永久無料のお仕事マッチングサービス<br>
+          『うち仕事』
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+    <div class="container">
+      <h3 class="text-center section__title">サービス内容</h3>
+      <div class="row">
+        <div class="col-sm-4">
+             <div class="section__img-box">
+                 <p class="text-center"><i class="fa fa-heart fa-3x" aria-hidden="true"></i></p>
+                 <h4 class="text-center">簡単ステップで予約完了</h4>   
+             </div>
+          <p>
+            連絡先の簡単登録で、即予約OK！
+            施行内容、お気に入りのスタイル、希望のスタイリストを選んで好きな日時に予約ができます。
+          </p>
+        </div>
+        <div class="col-sm-4">
+             <div class="section__img-box">
+                 <p class="text-center"><i class="fa fa-heart fa-3x" aria-hidden="true"></i></p>
+                 <h4 class="text-center">サイトから会員登録をする</h4>   
+             </div>
+          <p>
+            1分で会員情報を入力。素早く会員登録が出来ます。その後、２４時間いつでもネット予約OK。
+          </p>
+        </div>
+        <div class="col-sm-4">
+             <div class="section__img-box">
+                 <p class="text-center"><i class="fa fa-heart fa-3x" aria-hidden="true"></i></p>
+                 <h4 class="text-center">周辺のスタイリストの検索をする</h4>
+             </div>
+          <p>
+            全国各地のネイリストさんが多数登録中。近隣から出張ネイルをしてくれるネイリストさんを簡単検索。
+          </p>
+        </div>
+      </div>
+      <p class="text-center">
+          <%= link_to about_path do %>
+            <button type="button" class="btn btn-outline-danger btn-lg">うちサロンとは？</button>
+          <% end %>
+      </p>
+    </div><!-- .container -->
+</section>
+
+<section class="p-onsale-tickets section c-bg-dark">
+    <div class="container">
+      <h3 class="text-center section__title">販売中のチケット</h3>
+
+  <%# @items.each_slice(3) do |items| %>
+    <div class="row">
+      <%#= render items %>
+    </div>
+  <%# end %>
+ </div>
+</section>
+
+<%= render "shared/voice" %>
