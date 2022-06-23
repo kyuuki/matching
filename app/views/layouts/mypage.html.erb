@@ -16,11 +16,7 @@
           </div>
           <div class="col-md-3 col-md-pull-9">
               <p class="text-center">
-                <% if current_user.profile_image.url.nil? %>
-                  <%= image_tag "/images/prof_img2.jpg", class: "mypage__profile-img c-w100", size: "216x216" %>
-                <% else %>
-                  <%= image_tag current_user.profile_image.url, class: "mypage__profile-img c-w100", size: "216x216" %>
-                <% end %>
+                <%= image_tag current_user.profile_image_url, class: "mypage__profile-img c-w100", size: "216x216" %>
               </p>
               <p class="user-name text-center">
                 <% if current_user.account_name.nil? %>

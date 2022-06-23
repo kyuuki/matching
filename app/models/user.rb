@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
 
   def profile_image_url
     if profile_image.url.nil?
-      "prof_noimg.jpg"
+      "/images/prof_noimg.jpg"
     else
       profile_image.url
     end
