@@ -5,7 +5,11 @@
                    <dl>
                        <dt>
                          <%= link_to item do %>
-                           <%= image_tag item.user.profile_image_url, class: "job-panel__profile-img", size: "80x80", alt: "プロフィール写真" %>
+                           <% if current_user.profile_image.url.nil? %>
+                             <%= image_tag "/images/prof_img2.jpg", class: "job-panel__profile-img", size: "80x80" %>
+                           <% else %>
+                             <%= image_tag item.user.profile_image_url, class: "job-panel__profile-img", size: "80x80", alt: "プロフィール写真" %>
+                           <% end %>
                          <% end %>
                        </dt>
                        <dd>
