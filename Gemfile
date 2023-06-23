@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 ruby "2.7.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 6.1.7', '>= 6.1.7.3'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '>= 6.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -15,13 +15,13 @@ gem 'coffee-rails'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.4.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '~> 1.0.0', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -50,20 +50,20 @@ group :development, :test do
 end
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production
-gem 'puma'
+gem 'puma', '>= 4.3.12'
 
 gem 'slim-rails'
 
 gem 'devise'
-gem 'omniauth'
+gem 'omniauth', '>= 2.1.0'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
-gem 'kaminari'
+gem 'kaminari', '>= 1.2.1'
 gem 'ransack'
 gem 'cocoon'
 
-gem 'carrierwave'
+gem 'carrierwave', '>= 1.3.2'
 gem 'rmagick', :require => 'RMagick'  # http://blog.ruedap.com/2011/04/10/ruby-heroku-use-rmagick-bundler-require
 gem 'cloudinary'
 
@@ -78,7 +78,7 @@ gem 'factory_girl_rails'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'better_errors'
+  gem 'better_errors', '>= 2.8.0'
   gem 'binding_of_caller'
 end
 
@@ -86,5 +86,5 @@ end
 
 # SEO
 gem 'sitemap_generator'
-gem 'meta-tags'
+gem 'meta-tags', '>= 2.14.0'
 
