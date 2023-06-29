@@ -2,20 +2,20 @@ source 'https://rubygems.org'
 ruby "2.7.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 6.1.7', '>= 6.1.7.4'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '>= 5.0.8'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails'
+gem 'coffee-rails', '>= 5.0.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.3.2'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -39,7 +39,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.3', '>= 2.3.0'
+  gem 'web-console', '~> 3.0', '>= 3.0.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -52,15 +52,15 @@ gem 'pg', group: :production
 gem 'rails_12factor', group: :production
 gem 'puma'
 
-gem 'slim-rails'
+gem 'slim-rails', '>= 3.2.0'
 
-gem 'devise'
+gem 'devise', '>= 4.9.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 gem 'kaminari'
-gem 'ransack'
+gem 'ransack', '>= 1.8.6'
 gem 'cocoon'
 
 gem 'carrierwave'
@@ -68,7 +68,7 @@ gem 'rmagick', :require => 'RMagick'  # http://blog.ruedap.com/2011/04/10/ruby-h
 gem 'cloudinary'
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 3.8.0'
   gem 'capybara'
   gem 'timecop'
 end
@@ -86,5 +86,5 @@ end
 
 # SEO
 gem 'sitemap_generator'
-gem 'meta-tags'
+gem 'meta-tags', '>= 2.14.0'
 
