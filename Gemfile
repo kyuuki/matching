@@ -60,7 +60,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 gem 'kaminari'
-gem 'ransack'
+gem 'ransack', '>= 4.0.0'
 gem 'cocoon'
 
 gem 'carrierwave'
