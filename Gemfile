@@ -50,7 +50,7 @@ group :development, :test do
 end
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production
-gem 'puma'
+gem 'puma', '>= 5.6.7'
 
 gem 'slim-rails'
 
