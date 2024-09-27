@@ -55,7 +55,7 @@ gem 'puma'
 gem 'slim-rails'
 
 gem 'devise'
-gem 'omniauth'
+gem 'omniauth', '>= 2.1.0'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
