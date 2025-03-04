@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 ruby "2.7.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 7.0.0'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '>= 6.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -39,7 +39,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.3', '>= 2.3.0'
+  gem 'web-console', '~> 3.0', '>= 3.0.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -60,7 +60,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 gem 'kaminari'
-gem 'ransack'
+gem 'ransack', '>= 2.3.1'
 gem 'cocoon'
 
 gem 'carrierwave'
