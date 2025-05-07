@@ -68,7 +68,7 @@ gem 'rmagick', :require => 'RMagick'  # http://blog.ruedap.com/2011/04/10/ruby-h
 gem 'cloudinary'
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 8.0.0'
   gem 'capybara'
   gem 'timecop'
 end
