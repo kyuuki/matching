@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.7.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 7.1.5', '>= 7.1.5.2'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -59,8 +59,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
-gem 'kaminari'
-gem 'ransack'
+gem 'kaminari', '>= 1.2.0'
+gem 'ransack', '>= 1.8.6'
 gem 'cocoon'
 
 gem 'carrierwave'
