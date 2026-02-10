@@ -56,7 +56,7 @@ gem 'slim-rails'
 
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '>= 5.0.0'
 gem 'omniauth-twitter'
 
 gem 'kaminari'
